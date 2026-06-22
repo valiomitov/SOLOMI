@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Александра Соломи — Психолог | Бургас и онлайн</title>
+<meta name="description" content="Александра Соломи — дипломиран психолог и психотерапевт под супервизия. Индивидуални консултации, работа с деца, юноши и родители. Бургас и онлайн.">
+<style>
+  :root{
+    --bg:#f7f4ec; --paper:#fffdf8; --ink:#2f3a33; --muted:#6b756c;
+    --green:#5f7a5f; --green-dark:#46583f; --sand:#e7ddc9; --accent:#c08b5c;
+    --radius:22px; --shadow:0 18px 50px rgba(70,88,63,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:600;line-height:1.2;color:var(--green-dark)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .btn{display:inline-block;background:var(--green);color:#fff;padding:14px 28px;border-radius:999px;font-weight:600;transition:.25s;border:1px solid var(--green)}
+  .btn:hover{background:var(--green-dark);transform:translateY(-2px)}
+  .btn.ghost{background:transparent;color:var(--green-dark);border-color:var(--sand)}
+  .btn.ghost:hover{background:var(--sand)}
+
+  /* Nav */
+  header{position:sticky;top:0;z-index:50;background:rgba(247,244,236,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--sand)}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1080px;margin:0 auto}
+  .logo{font-family:Georgia,serif;font-size:1.25rem;color:var(--green-dark);font-weight:600;letter-spacing:.3px}
+  .logo span{color:var(--accent)}
+  .links{display:flex;gap:28px;align-items:center}
+  .links a{color:var(--muted);font-size:.95rem;transition:.2s}
+  .links a:hover{color:var(--green-dark)}
+  .menu-btn{display:none;background:none;border:none;font-size:1.6rem;color:var(--green-dark);cursor:pointer}
+  .mobile-nav{display:none;flex-direction:column;gap:6px;padding:12px 24px 20px;border-bottom:1px solid var(--sand)}
+  .mobile-nav.open{display:flex}
+  .mobile-nav a{color:var(--green-dark);padding:10px 6px;border-radius:10px}
+  .mobile-nav a:hover{background:var(--sand)}
+  .mobile-nav a.btn{color:#fff;text-align:center}
+
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:72px 0 64px}
+  .hero .eyebrow{color:var(--accent);font-weight:600;letter-spacing:1.5px;text-transform:uppercase;font-size:.8rem;margin-bottom:18px}
+  .hero h1{font-size:3rem;margin-bottom:22px}
+  .hero p.lead{font-size:1.15rem;color:var(--muted);margin-bottom:30px;max-width:46ch}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .portrait{position:relative;aspect-ratio:4/5;border-radius:var(--radius);background:
+     radial-gradient(circle at 30% 25%, #cdd9c4, transparent 60%),
+     linear-gradient(140deg,var(--sand),#d8c7a8);
+     box-shadow:var(--shadow);display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+  .portrait::after{content:"📷  Вашата снимка тук";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff9;font-size:.95rem;font-family:'Segoe UI',sans-serif}
+  .badge{position:absolute;bottom:18px;left:18px;right:18px;background:rgba(255,253,248,.92);border-radius:16px;padding:14px 18px;font-size:.85rem;color:var(--green-dark);box-shadow:0 8px 20px rgba(0,0,0,.06)}
+
+  /* Trust strip */
+  .trust{background:var(--green-dark);color:#eef0e9}
+  .trust .wrap{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;padding:22px 24px;text-align:center}
+  .trust b{display:block;font-size:1.5rem;font-family:Georgia,serif;color:#fff}
+  .trust small{color:#cdd5c6;font-size:.82rem}
+
+  section{padding:72px 0}
+  .section-head{text-align:center;max-width:60ch;margin:0 auto 48px}
+  .section-head .eyebrow{color:var(--accent);font-weight:600;letter-spacing:1.5px;text-transform:uppercase;font-size:.78rem}
+  .section-head h2{font-size:2.1rem;margin:10px 0 14px}
+  .section-head p{color:var(--muted)}
+
+  /* About */
+  .about{display:grid;grid-template-columns:.85fr 1.15fr;gap:46px;align-items:center}
+  .about .ph{aspect-ratio:1;border-radius:var(--radius);background:linear-gradient(160deg,#cdd9c4,#e7ddc9);box-shadow:var(--shadow);position:relative}
+  .about .ph::after{content:"📷";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem;opacity:.5}
+  .about h2{font-size:2rem;margin-bottom:18px}
+  .about p{color:#4a564d;margin-bottom:16px}
+  .creds{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .chip{background:var(--paper);border:1px solid var(--sand);border-radius:999px;padding:8px 16px;font-size:.85rem;color:var(--green-dark)}
+
+  /* Services */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{background:var(--paper);border:1px solid var(--sand);border-radius:var(--radius);padding:30px;transition:.25s}
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .card .ic{width:50px;height:50px;border-radius:14px;background:#eef1e8;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px}
+  .card h3{font-size:1.2rem;margin-bottom:10px}
+  .card p{color:var(--muted);font-size:.95rem}
+
+  /* Approach */
+  .approach{background:var(--sand)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+  .step{background:var(--paper);border-radius:var(--radius);padding:26px}
+  .step::before{counter-increment:s;content:counter(s);display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--green);color:#fff;font-family:Georgia,serif;font-size:1.2rem;margin-bottom:16px}
+  .step h3{font-size:1.05rem;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:.9rem}
+
+  /* Quote */
+  .quote{text-align:center;max-width:64ch;margin:0 auto}
+  .quote p{font-family:Georgia,serif;font-size:1.6rem;font-style:italic;color:var(--green-dark);line-height:1.5}
+
+  /* Contact */
+  .contact{background:var(--green-dark);color:#eef0e9;border-radius:var(--radius);padding:54px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  .contact h2{color:#fff;font-size:2rem;margin-bottom:14px}
+  .contact p{color:#cdd5c6;margin-bottom:22px}
+  .contact .info li{list-style:none;margin-bottom:12px;color:#e4e8df}
+  .contact .info b{color:#fff}
+  form{display:grid;gap:14px}
+  input,textarea{width:100%;padding:13px 16px;border-radius:12px;border:1px solid #6f7e6a;background:#3b4a35;color:#fff;font-family:inherit}
+  input::placeholder,textarea::placeholder{color:#b6c0ad}
+  form .btn{background:var(--accent);border-color:var(--accent)}
+  form .btn:hover{background:#a8744a;border-color:#a8744a}
+
+  footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:.88rem}
+  footer .logo{display:inline-block;margin-bottom:8px}
+
+  @media(max-width:880px){
+    .hero,.about,.contact{grid-template-columns:1fr}
+    .grid,.steps{grid-template-columns:1fr 1fr}
+    .links{display:none}
+    .menu-btn{display:block}
+    .hero h1{font-size:2.3rem}
+    .contact{padding:34px}
+  }
+  @media(max-width:520px){.grid,.steps{grid-template-columns:1fr}.hero h1{font-size:2rem}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Александра <span>Соломи</span></div>
+    <div class="links">
+      <a href="#about">За мен</a>
+      <a href="#services">Услуги</a>
+      <a href="#approach">Подход</a>
+      <a href="#contact">Контакти</a>
+      <a href="#contact" class="btn" style="padding:10px 22px">Запазете час</a>
+    </div>
+    <button class="menu-btn" aria-label="Меню" onclick="document.getElementById('mnav').classList.toggle('open')">☰</button>
+  </nav>
+  <div id="mnav" class="mobile-nav">
+    <a href="#about" onclick="this.parentNode.classList.remove('open')">За мен</a>
+    <a href="#services" onclick="this.parentNode.classList.remove('open')">Услуги</a>
+    <a href="#approach" onclick="this.parentNode.classList.remove('open')">Подход</a>
+    <a href="#contact" onclick="this.parentNode.classList.remove('open')">Контакти</a>
+    <a href="#contact" class="btn" onclick="this.parentNode.classList.remove('open')">Запазете час</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="wrap">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Психолог · Бургас и онлайн</p>
+      <h1>Пространство за разбиране, доверие и спокойствие</h1>
+      <p class="lead">Дипломиран психолог и психотерапевт под супервизия. Помагам на хора в моменти на промяна, стрес и важни решения — с топлина, уважение и пълна конфиденциалност.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn">Запазете консултация</a>
+        <a href="#about" class="btn ghost">Запознайте се с мен</a>
+      </div>
+    </div>
+    <div class="portrait">
+      <div class="badge">🌿 Консултации на български, английски и гръцки — на живо и онлайн</div>
+    </div>
+  </section>
+</div>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="wrap">
+    <div><b>Бургас</b><small>ул. „Цар Иван Шишман“ № 20, ет. 2</small></div>
+    <div><b>Онлайн</b><small>Viber · Skype · Messenger</small></div>
+    <div><b>3 езика</b><small>Български · English · Ελληνικά</small></div>
+    <div><b>Конфиденциалност</b><small>Сигурна и спокойна среда</small></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="wrap">
+  <section id="about" class="about">
+    <div class="ph"></div>
+    <div>
+      <p class="eyebrow" style="color:var(--accent);font-weight:600;letter-spacing:1.5px;text-transform:uppercase;font-size:.78rem">За мен</p>
+      <h2>Здравейте, аз съм Александра</h2>
+      <p>Работя като дипломиран психолог и психотерапевт под супервизия и предлагам професионални консултации и подкрепа в Бургас и дистанционно. Развивам практиката си с фокус върху предизвикателствата, които съпътстват личното развитие и междуличностните отношения.</p>
+      <p>За мен е важно още в началото на съвместната ни работа да изградим доверителна и сигурна среда — място, в което можете да бъдете себе си без страх от оценка. Подходът ми е строго индивидуален и насочен към разбиране на същността на проблема и намиране на подходящо за вас решение.</p>
+      <div class="creds">
+        <span class="chip">Магистър „Психологическо консултиране“</span>
+        <span class="chip">Транзакционен анализ</span>
+        <span class="chip">EMDR</span>
+        <span class="chip">Психиатрия за психолози — МУ Пловдив</span>
+        <span class="chip">Дружество на психолозите в РБ</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- SERVICES -->
+<div class="wrap">
+  <section id="services">
+    <div class="section-head">
+      <p class="eyebrow">Услуги</p>
+      <h2>С какво мога да бъда полезна</h2>
+      <p>Всяка среща е насочена към вашата конкретна ситуация — без шаблони и бързи рецепти.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><div class="ic">🧭</div><h3>Индивидуални консултации</h3><p>Подкрепа при стрес, тревожност, усещане за самота и затруднения при вземане на важни решения.</p></div>
+      <div class="card"><div class="ic">👨‍👩‍👧</div><h3>Деца, юноши и родители</h3><p>Съдействие за подобряване на родителството и разрешаване на семейни конфликти.</p></div>
+      <div class="card"><div class="ic">💞</div><h3>Партньорски отношения</h3><p>Работа с трудности в близките взаимоотношения и възстановяване на връзката.</p></div>
+      <div class="card"><div class="ic">🌱</div><h3>Осиновяване</h3><p>Опит с емоционални състояния, свързани с осиновени, биологични родители и осиновители.</p></div>
+      <div class="card"><div class="ic">💼</div><h3>Промени в работата</h3><p>Адаптация към промени в работната среда и постигане на индивидуални цели.</p></div>
+      <div class="card"><div class="ic">💻</div><h3>Онлайн консултации</h3><p>Срещи чрез Viber, Skype и Messenger — гъвкаво, независимо от местоположението ви.</p></div>
+    </div>
+  </section>
+</div>
+
+<!-- APPROACH -->
+<div class="approach">
+  <div class="wrap">
+    <section id="approach">
+      <div class="section-head">
+        <p class="eyebrow">Как протича</p>
+        <h2>Пътят на нашата работа</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>Първи контакт</h3><p>Свързвате се с мен и заедно намираме удобно време за среща.</p></div>
+        <div class="step"><h3>Запознаване</h3><p>Първата консултация е за изграждане на доверие и изясняване на нуждите ви.</p></div>
+        <div class="step"><h3>Съвместна работа</h3><p>Стъпка по стъпка изследваме същността на проблема в спокойно темпо.</p></div>
+        <div class="step"><h3>Устойчива промяна</h3><p>Намираме решения и ресурси, които остават с вас и след терапията.</p></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div class="wrap">
+  <section class="quote">
+    <p>„Понякога най-смелата стъпка е да поискаме подкрепа. Останалото правим заедно.“</p>
+  </section>
+</div>
+
+<!-- CONTACT -->
+<div class="wrap">
+  <section id="contact">
+    <div class="contact">
+      <div>
+        <h2>Запазете своя час</h2>
+        <p>Направете първата стъпка днес. Ще ви отговоря лично, за да уговорим удобно време — на живо в Бургас или онлайн.</p>
+        <ul class="info">
+          <li>📍 <b>Адрес:</b> Бургас, ул. „Цар Иван Шишман“ № 20, ет. 2</li>
+          <li>✉️ <b>Имейл:</b> alexandra.solomi@gmail.com</li>
+          <li>💬 <b>Онлайн:</b> Viber · Skype · Facebook Messenger</li>
+          <li>🗣️ <b>Езици:</b> български · английски · гръцки</li>
+        </ul>
+      </div>
+      <form onsubmit="alert('Благодаря! Това е примерна форма — свържете я с вашия имейл или система за записване.');return false;">
+        <input type="text" placeholder="Вашето име" required>
+        <input type="email" placeholder="Имейл за връзка" required>
+        <input type="tel" placeholder="Телефон (по желание)">
+        <textarea rows="4" placeholder="Споделете накратко с какво мога да помогна"></textarea>
+        <button type="submit" class="btn">Изпратете запитване</button>
+      </form>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="logo">Александра <span style="color:var(--accent)">Соломи</span></div>
+  <p>Психолог · Бургас и онлайн · © 2026 Всички права запазени</p>
+  <p style="margin-top:6px;font-size:.8rem">Член на Дружеството на психолозите в Република България</p>
+</footer>
+
+</body>
+</html>

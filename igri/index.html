@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Между сесиите — упражнения на Александра Соломи</title>
+<meta name="description" content="Упражнения между терапевтичните сесии: балансов модел по Пезешкиан и карти за разпознаване на мисловни капани.">
+<meta name="theme-color" content="#eceef1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#13171e" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://alexandrasolomi.com/igri/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23227d78'/%3E%3Cpath d='M32 32 L32 14 L50 14 Z M32 32 L14 14 L32 14 Z M32 32 L14 50 L14 32 Z M32 32 L50 32 L50 46 L32 46 Z' fill='%23eceef1'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+
+<style>
+:root{
+  --paper:#eceef1; --surface:#f7f8fa; --surface-2:#e3e6ea;
+  --ink:#1b212b; --ink-soft:#414b5a; --muted-t:#687384;
+  --line:#d3d8df; --line-strong:#b9c1cb;
+  --s1:#227d78; --s2:#a8761f; --s3:#a94f52; --s4:#5e50a0;
+  --ok:#227d78; --no:#a94f52;
+  --ok-wash:rgba(34,125,120,.10); --no-wash:rgba(169,79,82,.10);
+  --focus:#227d78; --grid:rgba(27,33,43,.14);
+  --shadow:0 1px 2px rgba(20,26,36,.05), 0 12px 32px -12px rgba(20,26,36,.18);
+  --measure:64ch;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#13171e; --surface:#1b2029; --surface-2:#232a35;
+    --ink:#e7eaef; --ink-soft:#c0c8d3; --muted-t:#8d99a8;
+    --line:#2b3340; --line-strong:#3b4553;
+    --s1:#5cc3bc; --s2:#e0ac48; --s3:#e08589; --s4:#9a8ce0;
+    --ok:#5cc3bc; --no:#e08589;
+    --ok-wash:rgba(92,195,188,.12); --no-wash:rgba(224,133,137,.12);
+    --focus:#5cc3bc; --grid:rgba(231,234,239,.16);
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#13171e; --surface:#1b2029; --surface-2:#232a35;
+  --ink:#e7eaef; --ink-soft:#c0c8d3; --muted-t:#8d99a8;
+  --line:#2b3340; --line-strong:#3b4553;
+  --s1:#5cc3bc; --s2:#e0ac48; --s3:#e08589; --s4:#9a8ce0;
+  --ok:#5cc3bc; --no:#e08589;
+  --ok-wash:rgba(92,195,188,.12); --no-wash:rgba(224,133,137,.12);
+  --focus:#5cc3bc; --grid:rgba(231,234,239,.16);
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px -12px rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Golos Text","Segoe UI",system-ui,sans-serif;font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Literata,Georgia,"Times New Roman",serif;font-weight:600;line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+button{font:inherit}
+
+/* ---------- chrome ---------- */
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar-in{max-width:1180px;margin:0 auto;padding:12px clamp(18px,4vw,40px);
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.brand{display:inline-flex;align-items:baseline;gap:10px;background:none;border:0;padding:0;cursor:pointer;color:inherit}
+.brand .mark{font-family:"JetBrains Mono",monospace;color:var(--s1);font-size:1.05rem;line-height:1}
+.brand strong{font-family:Literata,Georgia,serif;font-weight:600;font-size:1.02rem;letter-spacing:-.01em}
+.brand:focus-visible{outline:2px solid var(--focus);outline-offset:4px;border-radius:4px}
+nav{display:flex;gap:4px}
+nav button{border:0;background:transparent;cursor:pointer;color:var(--muted-t);
+  font-size:.88rem;font-weight:500;padding:7px 15px;border-radius:99px;transition:background .2s,color .2s}
+nav button:hover{color:var(--ink)}
+nav button[aria-current="page"]{background:var(--surface-2);color:var(--ink)}
+nav button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+.shell{max-width:1180px;margin:0 auto;padding:clamp(30px,5vw,60px) clamp(18px,4vw,40px) 90px}
+.eyebrow{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-t);font-weight:600}
+.lead{color:var(--ink-soft);max-width:58ch}
+[hidden]{display:none !important}
+
+/* ---------- hub ---------- */
+.hub-head{display:flex;flex-direction:column;gap:16px;max-width:var(--measure)}
+.hub-head h1{font-size:clamp(2.1rem,5.4vw,3.3rem);letter-spacing:-.015em}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:44px}
+.tool{position:relative;display:flex;flex-direction:column;gap:12px;text-align:left;
+  background:var(--surface);border:1px solid var(--line);border-radius:18px;
+  padding:26px 26px 24px;cursor:pointer;color:inherit;transition:border-color .2s,transform .2s,box-shadow .2s}
+.tool:hover{border-color:var(--line-strong);transform:translateY(-2px);box-shadow:var(--shadow)}
+.tool:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.tool h2{font-size:1.3rem}
+.tool p{font-size:.92rem;color:var(--muted-t)}
+.tool .meta{margin-top:auto;padding-top:14px;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted-t);font-weight:600;display:flex;gap:14px;flex-wrap:wrap}
+.glyph{width:56px;height:56px}
+
+/* ---------- shared bits ---------- */
+.btn{font-size:.87rem;font-weight:500;cursor:pointer;padding:10px 20px;border-radius:99px;
+  border:1px solid var(--line-strong);background:transparent;color:var(--ink-soft);
+  transition:background .2s,color .2s,border-color .2s}
+.btn:hover{background:var(--surface);color:var(--ink);border-color:var(--ink-soft)}
+.btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn.primary:hover{opacity:.88;background:var(--ink);color:var(--paper)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.footnote{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
+  font-size:.83rem;color:var(--muted-t);max-width:var(--measure);display:flex;flex-direction:column;gap:9px}
+
+/* ---------- balance model ---------- */
+.ribbon{display:flex;height:6px;margin:34px 0 0;border-radius:99px;overflow:hidden;background:var(--surface-2)}
+.ribbon span{transition:flex-grow .45s cubic-bezier(.4,0,.2,1);display:block}
+.ribbon span:nth-child(1){background:var(--s1)}
+.ribbon span:nth-child(2){background:var(--s2)}
+.ribbon span:nth-child(3){background:var(--s3)}
+.ribbon span:nth-child(4){background:var(--s4)}
+.work{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:clamp(28px,4vw,56px);margin-top:40px;align-items:start}
+@media(max-width:940px){ .work{grid-template-columns:1fr;gap:26px} }
+.modes{display:inline-flex;gap:4px;padding:4px;background:var(--surface-2);border-radius:99px;margin-bottom:26px}
+.modes button{font-size:.87rem;font-weight:500;border:0;cursor:pointer;padding:8px 18px;border-radius:99px;
+  background:transparent;color:var(--muted-t);transition:background .2s,color .2s}
+.modes button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.modes button:hover{color:var(--ink)}
+.modes button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.spheres{display:flex;flex-direction:column;gap:14px}
+.sphere{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:18px 20px 16px;position:relative;overflow:hidden}
+.sphere::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--c)}
+.sphere-head{display:flex;align-items:baseline;gap:14px;justify-content:space-between}
+.sphere h3{font-size:1.02rem;color:var(--c)}
+.pct{font-family:"JetBrains Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums;
+  font-size:1.15rem;font-weight:600;color:var(--ink);white-space:nowrap}
+.pct small{font-size:.62em;font-weight:400;color:var(--muted-t);margin-left:1px}
+.sphere .desc{font-size:.85rem;color:var(--muted-t);margin-top:3px;line-height:1.5}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;margin:16px 0 2px;background:transparent;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:5px;border-radius:99px;background:var(--surface-2)}
+input[type=range]::-moz-range-track{height:5px;border-radius:99px;background:var(--surface-2)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:20px;height:20px;border-radius:50%;
+  background:var(--c);border:3px solid var(--surface);margin-top:-7.5px;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--c);
+  border:3px solid var(--surface);box-shadow:0 1px 4px rgba(0,0,0,.25)}
+input[type=range]:focus-visible{outline:none}
+input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px var(--ok-wash),0 0 0 2px var(--focus)}
+input[type=range]:focus-visible::-moz-range-thumb{box-shadow:0 0 0 4px var(--ok-wash),0 0 0 2px var(--focus)}
+.viz{position:sticky;top:80px;display:flex;flex-direction:column;gap:18px}
+/* narrow screens: dissolve the aside so the order becomes chart → sliders → reading */
+@media(max-width:940px){
+  .viz{position:static;display:contents}
+  .viz .chartcard{order:-1}
+  .work > .controls{order:0}
+  .viz .reading{order:1}
+}
+svg.chart{display:block;width:100%;height:auto;overflow:visible}
+.axis{stroke:var(--grid);stroke-width:1}
+.refring{fill:none;stroke:var(--line-strong);stroke-width:1;stroke-dasharray:3 4}
+.wantline{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-dasharray:5 5;opacity:.55}
+.tip{font-family:"Golos Text",sans-serif;font-size:12.5px;font-weight:600}
+.tipnum{font-family:"JetBrains Mono",monospace;font-size:11px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.78rem;color:var(--muted-t);
+  border-top:1px solid var(--line);padding-top:14px;margin-top:16px}
+.legend i{display:inline-block;width:22px;height:0;border-top:1.5px dashed currentColor;
+  vertical-align:middle;margin-right:6px;opacity:.6}
+.reading{display:flex;flex-direction:column;gap:14px}
+.verdict{font-family:Literata,Georgia,serif;font-size:1.06rem;line-height:1.45}
+.finding{border-left:3px solid var(--c,var(--line-strong));padding-left:14px}
+.finding .label{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+  color:var(--muted-t);display:block;margin-bottom:3px}
+.finding .name{font-weight:600;color:var(--c)}
+.finding p{font-size:.9rem;color:var(--ink-soft);margin-top:4px}
+.step{background:var(--surface-2);border-radius:12px;padding:16px 18px;margin-top:4px}
+.step label{display:block;font-size:.82rem;font-weight:500;color:var(--ink-soft);margin-bottom:9px}
+.step textarea{width:100%;min-height:70px;resize:vertical;font:inherit;font-size:.9rem;
+  background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:9px;padding:10px 12px;line-height:1.5}
+.step textarea:focus-visible{outline:2px solid var(--focus);outline-offset:1px;border-color:transparent}
+
+/* ---------- thinking traps ---------- */
+.game{max-width:720px;margin:0 auto}
+.progress{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-t);font-weight:600}
+.bar{height:3px;background:var(--surface-2);border-radius:99px;overflow:hidden;margin:12px 0 30px}
+.bar i{display:block;height:100%;background:var(--s1);transition:width .35s cubic-bezier(.4,0,.2,1)}
+.thought{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:clamp(24px,4vw,36px);
+  font-family:Literata,Georgia,serif;font-size:clamp(1.15rem,2.6vw,1.45rem);line-height:1.45;
+  position:relative;text-wrap:pretty}
+.thought::before{content:"";position:absolute;top:20px;left:0;width:3px;height:calc(100% - 40px);
+  background:var(--s3);opacity:.5;border-radius:0 3px 3px 0}
+.qlabel{margin:26px 0 12px;font-size:.85rem;color:var(--muted-t)}
+.opts{display:grid;gap:10px}
+.opt{text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:14px 18px;cursor:pointer;color:var(--ink);font-size:.95rem;font-weight:500;
+  transition:border-color .18s,background .18s;display:flex;align-items:center;gap:12px}
+.opt:hover:not(:disabled){border-color:var(--line-strong);background:var(--surface-2)}
+.opt:disabled{cursor:default}
+.opt:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.opt .tick{width:20px;height:20px;flex:none;border-radius:50%;border:1.5px solid var(--line-strong);
+  display:grid;place-items:center;font-size:.75rem;font-weight:700;color:var(--paper)}
+.opt.is-ok{border-color:var(--ok);background:var(--ok-wash)}
+.opt.is-ok .tick{background:var(--ok);border-color:var(--ok)}
+.opt.is-no{border-color:var(--no);background:var(--no-wash)}
+.opt.is-no .tick{background:var(--no);border-color:var(--no)}
+.opt.dim{opacity:.45}
+.feedback{margin-top:22px;border-left:3px solid var(--c);padding-left:16px;display:flex;flex-direction:column;gap:10px}
+.feedback .verdict-line{font-weight:600;color:var(--c)}
+.feedback p{font-size:.93rem;color:var(--ink-soft)}
+.reframe{background:var(--surface-2);border-radius:12px;padding:14px 16px}
+.reframe span{display:block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:600;color:var(--muted-t);margin-bottom:5px}
+.reframe p{font-family:Literata,Georgia,serif;font-size:1rem;color:var(--ink)}
+
+.score{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+.result h2{font-size:clamp(1.6rem,4vw,2.2rem);margin-bottom:12px}
+.tally{display:flex;flex-direction:column;gap:10px;margin-top:24px}
+.tally-row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  padding:12px 0;border-bottom:1px solid var(--line);font-size:.94rem}
+.tally-row:last-child{border-bottom:0}
+.tally-row b{font-weight:600}
+.tally-row .n{font-family:"JetBrains Mono",monospace;font-size:.85rem;color:var(--muted-t);white-space:nowrap}
+.miss{color:var(--no)}
+
+details.ref{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+details.ref summary{cursor:pointer;font-size:.88rem;font-weight:500;color:var(--ink-soft);list-style:none}
+details.ref summary::-webkit-details-marker{display:none}
+details.ref summary::before{content:"+ ";color:var(--muted-t)}
+details.ref[open] summary::before{content:"− "}
+details.ref summary:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.ref-list{display:grid;gap:14px;margin-top:18px}
+.ref-item b{display:block;font-size:.95rem}
+.ref-item p{font-size:.88rem;color:var(--muted-t)}
+
+/* ---------- phones ---------- */
+@media(max-width:560px){
+  body{font-size:15.5px}
+  /* a two-row bar would eat a third of a phone screen — let it scroll away */
+  .topbar{position:static}
+  .topbar-in{padding:10px 16px;gap:10px}
+  .brand strong{font-size:.95rem}
+  nav{width:100%;gap:6px}
+  nav button{flex:1;text-align:center;padding:10px 8px;font-size:.83rem;background:var(--surface);
+    border:1px solid var(--line)}
+  nav button[aria-current="page"]{background:var(--surface-2);border-color:var(--line-strong)}
+  .shell{padding:24px 16px 64px}
+  .hub-head h1{font-size:2rem}
+  .tools{grid-template-columns:1fr;gap:14px;margin-top:32px}
+  .tool{padding:22px 20px}
+  .tool .meta{gap:10px;font-size:.72rem}
+  .glyph{width:44px;height:44px}
+  .ribbon{margin-top:26px}
+  .sphere{padding:16px 16px 14px}
+  .sphere-head{gap:10px}
+  .sphere h3{font-size:.98rem}
+  .card{padding:18px;border-radius:14px}
+  .thought{padding:22px 20px}
+  .opt{padding:15px 16px;font-size:.93rem}
+  .tally-row{flex-wrap:wrap;gap:4px}
+  .tally-row .n{width:100%}
+  .actions .btn{flex:1 1 auto;text-align:center}
+  .footnote{margin-top:40px}
+}
+/* touch targets: a 20px thumb is hard to grab with a thumb */
+@media(pointer:coarse){
+  input[type=range]{margin:20px 0 6px;height:28px}
+  input[type=range]::-webkit-slider-thumb{width:26px;height:26px;margin-top:-10.5px}
+  input[type=range]::-moz-range-thumb{width:26px;height:26px}
+  .btn,nav button{padding-top:12px;padding-bottom:12px}
+}
+*{-webkit-tap-highlight-color:rgba(0,0,0,.06)}
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}}
+@media print{.topbar,.actions,.modes,input[type=range]{display:none}body{background:#fff;color:#000}.viz{position:static}}
+</style>
+
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-in">
+    <button class="brand" id="goHome" type="button">
+      <span class="mark">◈</span><strong>Между сесиите</strong>
+    </button>
+    <nav>
+      <button type="button" data-go="balans">Балансов модел</button>
+      <button type="button" data-go="kapani">Мисловни капани</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HUB ============ -->
+<section class="shell" id="view-home">
+  <div class="hub-head">
+    <span class="eyebrow">Позитивна психотерапия · Александра Соломи</span>
+    <h1>Работата продължава и между сесиите</h1>
+    <p class="lead">Терапията се случва в кабинета, но промяната се случва през останалите шест дни от седмицата. Тук са упражненията, които подготвят разговора, продължават го или просто ви дават думи за нещо, което дотогава е нямало име.</p>
+  </div>
+
+  <div class="tools">
+    <button class="tool" type="button" data-go="balans">
+      <svg class="glyph" viewBox="0 0 56 56" aria-hidden="true">
+        <path d="M28 28 L28 8 L48 8 Z" fill="var(--s2)" opacity=".75"></path>
+        <path d="M28 28 L48 8 L48 28 Z" fill="var(--s2)" opacity=".35"></path>
+        <path d="M28 28 L8 8 L28 8 Z" fill="var(--s1)" opacity=".75"></path>
+        <path d="M28 28 L8 28 L8 8 Z" fill="var(--s1)" opacity=".35"></path>
+        <path d="M28 28 L8 48 L8 28 Z" fill="var(--s4)" opacity=".6"></path>
+        <path d="M28 28 L28 48 L8 48 Z" fill="var(--s4)" opacity=".3"></path>
+        <path d="M28 28 L48 28 L48 40 L28 40 Z" fill="var(--s3)" opacity=".55"></path>
+      </svg>
+      <h2>Балансов модел</h2>
+      <p>Раздайте 100 точки между тяло, дейност, отношения и бъдеще — и вижте къде животът ви се е наклонил. Моделът на Пезешкиан, който стои в основата на позитивната психотерапия.</p>
+      <span class="meta"><span>4 области</span><span>3–5 минути</span><span>Без верен отговор</span></span>
+    </button>
+
+    <button class="tool" type="button" data-go="kapani">
+      <svg class="glyph" viewBox="0 0 56 56" aria-hidden="true">
+        <rect x="6" y="9" width="34" height="26" rx="4" fill="none" stroke="var(--s3)" stroke-width="2" opacity=".45"></rect>
+        <rect x="12" y="15" width="34" height="26" rx="4" fill="var(--surface-2)" stroke="var(--s3)" stroke-width="2"></rect>
+        <path d="M20 24 h18 M20 30 h12" stroke="var(--s3)" stroke-width="2" stroke-linecap="round" opacity=".7"></path>
+        <circle cx="40" cy="44" r="8" fill="var(--surface)" stroke="var(--s1)" stroke-width="2"></circle>
+        <path d="M36.5 44 l2.5 2.5 l4.5 -5" fill="none" stroke="var(--s1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <h2>Мисловни капани</h2>
+      <p>Тревожната мисъл почти никога не лъже открито — тя изкривява. Разпознайте кой капан работи в дадено изречение и вижте как звучи по-балансираната му версия.</p>
+      <span class="meta"><span>12 карти</span><span>5 минути</span><span>8 капана</span></span>
+    </button>
+  </div>
+
+  <div class="footnote">
+    <p>Тези упражнения не са диагностика и не заместват консултация. Служат за самонаблюдение и за начало на разговор. Ако нещо, което изникне тук, ви разстрои, отбележете го и го занесете на сесия — точно за това е.</p>
+    <p>Всичко, което въведете, остава в браузъра на това устройство. Никъде не се изпраща и никой друг не го вижда.</p>
+  </div>
+</section>
+
+<!-- ============ BALANCE ============ -->
+<section class="shell" id="view-balans" hidden>
+  <div class="hub-head">
+    <span class="eyebrow">Позитивна психотерапия · модел на Пезешкиан</span>
+    <h1>Балансов модел</h1>
+    <p class="lead">Всеки разпределя силите си между четири области на живота — почти никога по равно. Там, където дълго не отива нищо, обикновено първо се появява симптомът. Раздайте вниманието си според това къде реално е отишла енергията ви през последните няколко седмици.</p>
+  </div>
+
+  <div class="ribbon" aria-hidden="true">
+    <span id="rib0"></span><span id="rib1"></span><span id="rib2"></span><span id="rib3"></span>
+  </div>
+
+  <div class="work">
+    <div class="controls">
+      <div class="modes" role="group" aria-label="Кой изглед попълвате">
+        <button type="button" id="mNow" aria-pressed="true">Както е сега</button>
+        <button type="button" id="mWant" aria-pressed="false">Както бих искал</button>
+      </div>
+      <div class="spheres" id="spheres"></div>
+      <div class="actions">
+        <button type="button" class="btn" id="bReset">Изчисти</button>
+        <button type="button" class="btn" id="bPrint">Отпечатай</button>
+      </div>
+    </div>
+
+    <aside class="viz">
+      <div class="card chartcard">
+        <svg viewBox="-16 -20 372 396" class="chart" role="img" aria-labelledby="chartTitle">
+          <title id="chartTitle">Диаграма на четирите области</title>
+          <g id="grid"></g>
+          <g id="wedges"></g>
+          <path id="wantPath" class="wantline"></path>
+          <g id="tips"></g>
+        </svg>
+        <div class="legend">
+          <span>Плътно — изгледът, който попълвате</span>
+          <span id="legOther" hidden><i></i>Пунктир — другият изглед</span>
+          <span>Тънкият квадрат е равновесието по 25%</span>
+        </div>
+      </div>
+      <div class="card reading" id="reading"></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ TRAPS ============ -->
+<section class="shell" id="view-kapani" hidden>
+  <div class="game">
+    <div id="playArea">
+      <div class="progress">
+        <span id="pgLabel">Карта 1 от 12</span>
+        <span class="score" id="pgScore">0 верни</span>
+      </div>
+      <div class="bar"><i id="pgBar" style="width:0%"></i></div>
+
+      <div class="thought"><span id="thoughtText"></span></div>
+      <p class="qlabel">Кой капан работи в това изречение?</p>
+      <div class="opts" id="opts"></div>
+      <div id="feedback"></div>
+      <div class="actions" id="nextWrap" hidden>
+        <button type="button" class="btn primary" id="bNext">Следваща карта</button>
+      </div>
+    </div>
+
+    <div id="resultArea" hidden></div>
+
+    <details class="ref">
+      <summary>Осемте капана — справка</summary>
+      <div class="ref-list" id="refList"></div>
+    </details>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ================= router ================= */
+  var VIEWS = ["home","balans","kapani"];
+  function show(name){
+    if (VIEWS.indexOf(name) === -1) name = "home";
+    VIEWS.forEach(function(v){
+      document.getElementById("view-" + v).hidden = (v !== name);
+    });
+    document.querySelectorAll("nav button").forEach(function(b){
+      if (b.dataset.go === name) b.setAttribute("aria-current","page");
+      else b.removeAttribute("aria-current");
+    });
+    window.scrollTo(0, 0);
+    if (name === "kapani" && !traps.started) traps.start();
+  }
+  function go(name){
+    if (location.hash !== "#/" + name) location.hash = "#/" + name;
+    else show(name);
+  }
+  window.addEventListener("hashchange", function(){
+    show((location.hash || "").replace("#/", ""));
+  });
+  document.querySelectorAll("[data-go]").forEach(function(el){
+    el.addEventListener("click", function(){ go(el.dataset.go); });
+  });
+  document.getElementById("goHome").addEventListener("click", function(){ go("home"); });
+
+  /* ================= storage ================= */
+  function load(key, fallback){
+    try {
+      var v = JSON.parse(localStorage.getItem(key) || "null");
+      return v === null ? fallback : v;
+    } catch(e){ return fallback; }
+  }
+  function store(key, val){
+    try { localStorage.setItem(key, JSON.stringify(val)); } catch(e){}
+  }
+
+  /* ================================================================
+     BALANCE MODEL
+     ================================================================ */
+  var SPHERES = [
+    { name:"Тяло и сетива", css:"--s1",
+      desc:"Сън, храна, движение, почивка, здраве, допир, удоволствие.",
+      excess:"Когато почти всичко минава през тялото, напрежението се превежда в симптоми и вниманието се мести от причината към усещането.",
+      lack:"Тялото мълчи най-дълго и после говори най-силно. Недостигът тук се връща като изтощение, безсъние или напрежение без обяснение." },
+    { name:"Дейност и постижения", css:"--s2",
+      desc:"Работа, учене, задачи, ред, пари, резултати.",
+      excess:"Свръхтежестта тук е най-честата картина преди изчерпване. Постижението успокоява бързо и точно затова се превръща в убежище от другите три области.",
+      lack:"Без усещане за свършена работа денят губи опора. Понякога това идва след загуба на работа, понякога след дълго отлагане." },
+    { name:"Контакт и отношения", css:"--s3",
+      desc:"Партньор, семейство, приятели, колеги, принадлежност.",
+      excess:"Когато всичко е в отношенията, собствените нужди се разчитат трудно, а отдръпването на другия се усеща като земетресение.",
+      lack:"Оттеглянето е разбираем отговор на разочарование или умора. Самотата след него обаче поддържа състоянието, от което е тръгнало." },
+    { name:"Фантазия и бъдеще", css:"--s4",
+      desc:"Смисъл, цели, вяра, въображение, мечти, изкуство.",
+      excess:"Живот предимно в бъдещето или във въображението може да е бягство от настоящето — планът е готов, но нищо не започва.",
+      lack:"Без представа за бъдеще настоящето се затваря. Тази област изчезва първа при потиснато състояние и се връща последна." }
+  ];
+
+  var BKEY = "mezhdu_sesiite_balance_v1";
+  var bs = load(BKEY, null);
+  if (!bs || !bs.now || bs.now.length !== 4) {
+    bs = { mode:"now", now:[25,25,25,25], want:[25,25,25,25], wantTouched:false, step:"" };
+  }
+
+  var wrap = document.getElementById("spheres");
+  var inputs = [], pcts = [];
+
+  SPHERES.forEach(function(s, i){
+    var el = document.createElement("div");
+    el.className = "sphere";
+    el.style.setProperty("--c", "var(" + s.css + ")");
+    el.innerHTML =
+      '<div class="sphere-head">' +
+        '<div><h3 id="lab'+i+'">'+s.name+'</h3><p class="desc">'+s.desc+'</p></div>' +
+        '<span class="pct" id="pct'+i+'">25<small>%</small></span>' +
+      '</div>' +
+      '<input type="range" min="0" max="100" step="1" id="rng'+i+'" aria-labelledby="lab'+i+'">';
+    wrap.appendChild(el);
+    var rng = el.querySelector("input");
+    rng.addEventListener("input", function(){
+      bs[bs.mode][i] = Number(rng.value);
+      if (bs.mode === "want") bs.wantTouched = true;
+      store(BKEY, bs); renderBalance();
+    });
+    inputs.push(rng);
+    pcts.push(el.querySelector(".pct"));
+  });
+
+  var CX = 170, CY = 170, MAXR = 132, FULL = 50;
+  var ANG = [-90, 0, 90, 180];
+  function pt(deg, r){ var a = deg*Math.PI/180; return [CX+Math.cos(a)*r, CY+Math.sin(a)*r]; }
+  function radius(p){ return Math.min(p/FULL, 1) * MAXR; }
+  function wedgePath(i, r){
+    var a = ANG[i], p1 = pt(a-45, r), p2 = pt(a+45, r);
+    return "M"+CX+" "+CY+" L"+p1[0].toFixed(1)+" "+p1[1].toFixed(1)+" L"+p2[0].toFixed(1)+" "+p2[1].toFixed(1)+" Z";
+  }
+  function outline(rs){
+    var d = "";
+    for (var i=0;i<4;i++){
+      var a = ANG[i], p1 = pt(a-45, rs[i]), p2 = pt(a+45, rs[i]);
+      d += (i===0?"M":"L") + p1[0].toFixed(1)+" "+p1[1].toFixed(1) + " L" + p2[0].toFixed(1)+" "+p2[1].toFixed(1)+" ";
+    }
+    return d + "Z";
+  }
+
+  (function buildGrid(){
+    var g = document.getElementById("grid"), out = "";
+    [15, 25, 40].forEach(function(v){
+      var r = radius(v);
+      out += '<path class="refring" d="'+ outline([r,r,r,r]) +'"'+ (v===25 ? ' stroke-width="1.4"' : ' opacity=".5"') +'></path>';
+    });
+    ANG.forEach(function(a){
+      var p = pt(a, MAXR);
+      out += '<line class="axis" x1="'+CX+'" y1="'+CY+'" x2="'+p[0].toFixed(1)+'" y2="'+p[1].toFixed(1)+'"></line>';
+    });
+    g.innerHTML = out;
+  })();
+
+  var wedgesG = document.getElementById("wedges"), tipsG = document.getElementById("tips");
+  SPHERES.forEach(function(s, i){
+    var p = document.createElementNS("http://www.w3.org/2000/svg","path");
+    p.setAttribute("fill","var("+s.css+")");
+    p.setAttribute("fill-opacity","0.62");
+    p.setAttribute("stroke","var("+s.css+")");
+    p.setAttribute("stroke-width","1.5");
+    p.setAttribute("stroke-linejoin","round");
+    wedgesG.appendChild(p);
+
+    var lp = pt(ANG[i], MAXR + 28);
+    var t = document.createElementNS("http://www.w3.org/2000/svg","text");
+    t.setAttribute("class","tip");
+    t.setAttribute("x", lp[0].toFixed(0));
+    t.setAttribute("y", lp[1].toFixed(0));
+    t.setAttribute("text-anchor","middle");
+    t.setAttribute("fill","var("+s.css+")");
+    t.textContent = s.name.split(" и ")[0];
+    tipsG.appendChild(t);
+
+    var n = document.createElementNS("http://www.w3.org/2000/svg","text");
+    n.setAttribute("class","tipnum");
+    n.setAttribute("x", lp[0].toFixed(0));
+    n.setAttribute("y", (lp[1]+15).toFixed(0));
+    n.setAttribute("text-anchor","middle");
+    n.setAttribute("fill","var(--muted-t)");
+    tipsG.appendChild(n);
+  });
+
+  function norm(arr){
+    var sum = arr.reduce(function(a,b){return a+b;},0);
+    if (!sum) return [25,25,25,25];
+    return arr.map(function(v){ return v/sum*100; });
+  }
+
+  function buildReading(nowP, wantP){
+    var hi = 0, lo = 0;
+    nowP.forEach(function(v,i){ if (v > nowP[hi]) hi = i; if (v < nowP[lo]) lo = i; });
+    var html = "";
+    if (nowP[hi] - nowP[lo] < 10){
+      html += '<p class="verdict">Разпределението ви е близо до равновесие — нито една област не изтегля силите за сметка на друга.</p>';
+      html += '<div class="finding" style="--c:var(--line-strong)"><p>Това рядко е състояние, което трае дълго. Ако се върнете към упражнението след месец, самото изместване казва нещо.</p></div>';
+    } else {
+      html += '<p class="verdict">Най-много от силите ви отиват в <strong style="color:var('+SPHERES[hi].css+')">'+SPHERES[hi].name.toLowerCase()+'</strong>, а най-малко остава за <strong style="color:var('+SPHERES[lo].css+')">'+SPHERES[lo].name.toLowerCase()+'</strong>.</p>';
+      html += '<div class="finding" style="--c:var('+SPHERES[hi].css+')"><span class="label">Носи най-много тежест</span><span class="name">'+SPHERES[hi].name+' · '+Math.round(nowP[hi])+'%</span><p>'+SPHERES[hi].excess+'</p></div>';
+      html += '<div class="finding" style="--c:var('+SPHERES[lo].css+')"><span class="label">Остава най-назад</span><span class="name">'+SPHERES[lo].name+' · '+Math.round(nowP[lo])+'%</span><p>'+SPHERES[lo].lack+'</p></div>';
+    }
+    var gi = -1, gap = 0;
+    wantP.forEach(function(v,i){ var d = v - nowP[i]; if (d > gap){ gap = d; gi = i; } });
+    if (bs.wantTouched && gi > -1 && gap >= 5){
+      html += '<div class="finding" style="--c:var('+SPHERES[gi].css+')"><span class="label">Най-голяма разлика с желаното</span><span class="name">'+SPHERES[gi].name+' · +'+Math.round(gap)+' пункта</span><p>Тук искате осезаемо повече, отколкото имате. Промяната в тази област обикновено разтоварва и съседните.</p></div>';
+    }
+    html += '<div class="step"><label for="stepIn">Една малка стъпка тази седмица — толкова малка, че да е сигурно изпълнима</label><textarea id="stepIn" placeholder="Например: в сряда вечер излизам на разходка от 20 минути, без телефон."></textarea></div>';
+
+    var box = document.getElementById("reading");
+    box.innerHTML = html;
+    var ta = document.getElementById("stepIn");
+    ta.value = bs.step || "";
+    ta.addEventListener("input", function(){ bs.step = ta.value; store(BKEY, bs); });
+  }
+
+  var readingTimer = null;
+  function renderBalance(){
+    var raw = bs[bs.mode];
+    var nowP = norm(bs.now), wantP = norm(bs.want), shown = norm(raw);
+    var other = bs.mode === "now" ? wantP : nowP;
+
+    inputs.forEach(function(inp,i){
+      if (Number(inp.value) !== raw[i]) inp.value = raw[i];
+      pcts[i].innerHTML = Math.round(shown[i]) + '<small>%</small>';
+    });
+
+    var paths = wedgesG.querySelectorAll("path");
+    for (var i=0;i<4;i++) paths[i].setAttribute("d", wedgePath(i, radius(shown[i])));
+
+    var wp = document.getElementById("wantPath"), leg = document.getElementById("legOther");
+    if (bs.wantTouched){
+      wp.setAttribute("d", outline(other.map(radius)));
+      leg.removeAttribute("hidden");
+    } else {
+      wp.setAttribute("d", "");
+      leg.setAttribute("hidden","");
+    }
+
+    var nums = tipsG.querySelectorAll(".tipnum");
+    for (var j=0;j<4;j++) nums[j].textContent = Math.round(shown[j]) + "%";
+    for (var k=0;k<4;k++) document.getElementById("rib"+k).style.flexGrow = shown[k];
+
+    clearTimeout(readingTimer);
+    readingTimer = setTimeout(function(){
+      if (document.activeElement && document.activeElement.id === "stepIn") return;
+      buildReading(nowP, wantP);
+    }, 260);
+  }
+
+  var bNow = document.getElementById("mNow"), bWant = document.getElementById("mWant");
+  function setMode(m){
+    bs.mode = m; store(BKEY, bs);
+    bNow.setAttribute("aria-pressed", String(m === "now"));
+    bWant.setAttribute("aria-pressed", String(m === "want"));
+    renderBalance();
+  }
+  bNow.addEventListener("click", function(){ setMode("now"); });
+  bWant.addEventListener("click", function(){ setMode("want"); });
+  document.getElementById("bReset").addEventListener("click", function(){
+    bs.now = [25,25,25,25]; bs.want = [25,25,25,25]; bs.wantTouched = false; bs.step = "";
+    store(BKEY, bs); renderBalance(); buildReading(norm(bs.now), norm(bs.want));
+  });
+  document.getElementById("bPrint").addEventListener("click", function(){ window.print(); });
+  setMode(bs.mode);
+  buildReading(norm(bs.now), norm(bs.want));
+
+  /* ================================================================
+     THINKING TRAPS
+     ================================================================ */
+  var TRAPS = {
+    over:   { name:"Свръхобобщение",        blurb:"Един случай се превръща в правило. Разпознава се по думите „винаги“, „никога“, „всички“, „всеки път“." },
+    mind:   { name:"Четене на мисли",       blurb:"Приемам, че знам какво мисли другият за мен — без той да го е казал и без да съм проверил." },
+    cat:    { name:"Катастрофизиране",      blurb:"Направо към най-лошия възможен изход, прескачайки всички по-вероятни между него и сега." },
+    bw:     { name:"Черно-бяло мислене",    blurb:"Само две възможности: съвършено или провал. Средното — тоест почти целият живот — изчезва." },
+    emo:    { name:"Емоционално доказателство", blurb:"Щом го чувствам силно, значи е вярно. Емоцията се приема за доказателство вместо за сигнал." },
+    pers:   { name:"Персонализиране",       blurb:"Поемам отговорност за нещо, което до голяма степен не зависи от мен." },
+    must:   { name:"Тиранията на „трябва“", blurb:"Вътрешни правила без автор, които не мотивират, а произвеждат вина и срам." },
+    filter: { name:"Филтър",                blurb:"От десет неща виждам едното лошо. Доброто не се брои, защото „не е било истинско“." }
+  };
+  var TRAP_KEYS = Object.keys(TRAPS);
+
+  var CARDS = [
+    { t:"Не ми отговори на съобщението — явно ѝ е писнало от мен.", k:"mind",
+      why:"Мълчанието е факт; „писнало ѝ е“ е тълкуване. Между двете има десетки други обяснения — работа, изтощение, забравен телефон.",
+      re:"Не ми отговори. Не знам защо. Ако ми е важно, мога да попитам." },
+    { t:"Изпуснах един срок — както винаги провалям всичко важно.", k:"over",
+      why:"„Както винаги“ и „всичко“ са думите, които издават капана. Един срок се превръща в присъда за целия живот.",
+      re:"Изпуснах този срок. Случвало ми се е и преди, но не всеки път — и има какво да науча от него." },
+    { t:"Ако не се справя перфектно на изпита, значи съм провал.", k:"bw",
+      why:"Между „перфектно“ и „провал“ стои цялата скала, по която реално се движат хората.",
+      re:"Искам да се представя добре. Каквото и да е представянето ми, то е резултат от един изпит, а не оценка за мен." },
+    { t:"Чувствам се безполезен, значи наистина съм безполезен.", k:"emo",
+      why:"Емоцията е информация за състоянието ви, не доказателство за факт. Тъгата прави безполезността да звучи като истина.",
+      re:"В момента се чувствам безполезен. Това е тежко чувство — и не е същото като да съм безполезен." },
+    { t:"Ако тръгна с колата в този дъжд, ще катастрофирам и всичко ще свърши.", k:"cat",
+      why:"Умът прескача от „вали“ директно до най-лошия възможен край, без нито една от по-вероятните стъпки между тях.",
+      re:"Вали и пътят е хлъзгав. Мога да карам по-бавно, да тръгна по-рано или да отложа." },
+    { t:"Детето ми се държи зле в училище — значи съм лош родител.", k:"pers",
+      why:"Поведението на детето има много източници: възраст, класа, приятели, сън. Родителят е един от тях, не единственият.",
+      re:"Нещо в училище не върви. Част от него зависи от мен и мога да се заема точно с тази част." },
+    { t:"Трябваше да се обадя по-рано. Трябва да съм по-организиран. Трябва да мога сам.", k:"must",
+      why:"Три правила без автор в едно изречение. Те не подтикват към действие — произвеждат вина.",
+      re:"Бих искал да се обадя по-рано. Ще ми е по-леко, ако съм по-организиран. Мога и да помоля за помощ." },
+    { t:"Похвалиха ме за презентацията, но само от учтивост. Важното е, че се запънах в началото.", k:"filter",
+      why:"Похвалата е обезсилена, грешката е увеличена. Остава само доказателството, което потвърждава очакването.",
+      re:"Запънах се в началото и после се справих. И двете са част от една и съща презентация." },
+    { t:"Шефът мина покрай мен, без да ме погледне — сигурно съм сгрешил нещо.", k:"mind",
+      why:"Един поглед се тълкува като оценка. Липсата на информация се запълва с най-тревожното обяснение.",
+      re:"Мина, без да ме погледне. Не знам какво означава. Ако има проблем, обикновено ми се казва." },
+    { t:"Или ще спазя диетата съвършено, или няма смисъл изобщо.", k:"bw",
+      why:"Точно това мислене превръща едно отклонение в отказ от целия план.",
+      re:"Днес се отклоних. Утре продължавам оттам, докъдето съм стигнал." },
+    { t:"Страх ме е да летя, значи летенето наистина е опасно.", k:"emo",
+      why:"Интензивността на страха се приема за мярка на реалния риск. Двете почти не са свързани.",
+      re:"Страх ме е да летя. Страхът е истински; опасността е отделен въпрос, на който има отговор." },
+    { t:"Ако кажа не, ще ме намразят и ще остана съвсем сам.", k:"cat",
+      why:"От един отказ до пълната самота — без нито една междинна стъпка. Точно тази верига пречи да поставяме граници.",
+      re:"Ако кажа не, някой може да е недоволен. Отношенията, които издържат само на „да“, така или иначе са крехки." },
+    { t:"Изкарах шестици по всички предмети, но тройката по химия показва какъв съм всъщност.", k:"filter",
+      why:"Едната оценка се приема за истината, останалите — за случайност. Филтърът пропуска само потвърждаващото.",
+      re:"Справям се добре по повечето предмети и по-трудно с химията. И двете са верни." },
+    { t:"Трябва да се справям, без да моля никого за помощ.", k:"must",
+      why:"Правило, което звучи като сила, а на практика оставя човека сам точно когато има най-голяма нужда.",
+      re:"Мога много неща сам. Да помоля за помощ, когато ми е трудно, също е умение." },
+    { t:"Един приятел не се обади за рождения ми ден — на никого не му пука за мен.", k:"over",
+      why:"От един човек към „никой“. Едно наблюдение се разширява до всички отношения наведнъж.",
+      re:"Този приятел не се обади и ме заболя. Други се обадиха." },
+    { t:"Пътуването се отмени заради времето. Ако не бях предложил тази дата, всичко щеше да е наред.", k:"pers",
+      why:"Времето не зависи от избора на дата. Вината се поема за събитие извън всякакъв контрол.",
+      re:"Времето обърка плана. Може да изберем друга дата." }
+  ];
+
+  var ROUND = 12;
+  var traps = {
+    started:false, deck:[], idx:0, right:0, misses:{}, answered:false
+  };
+
+  function shuffled(a){
+    var arr = a.slice();
+    for (var i = arr.length - 1; i > 0; i--){
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+    return arr;
+  }
+
+  traps.start = function(){
+    traps.started = true;
+    traps.deck = shuffled(CARDS).slice(0, ROUND);
+    traps.idx = 0; traps.right = 0; traps.misses = {}; traps.answered = false;
+    document.getElementById("resultArea").hidden = true;
+    document.getElementById("playArea").hidden = false;
+    renderCard();
+  };
+
+  function renderCard(){
+    var c = traps.deck[traps.idx];
+    traps.answered = false;
+    document.getElementById("pgLabel").textContent = "Карта " + (traps.idx + 1) + " от " + traps.deck.length;
+    document.getElementById("pgScore").textContent = traps.right + " верни";
+    document.getElementById("pgBar").style.width = (traps.idx / traps.deck.length * 100) + "%";
+    document.getElementById("thoughtText").textContent = "„" + c.t + "“";
+    document.getElementById("feedback").innerHTML = "";
+    document.getElementById("nextWrap").hidden = true;
+
+    var distractors = shuffled(TRAP_KEYS.filter(function(k){ return k !== c.k; })).slice(0, 3);
+    var options = shuffled([c.k].concat(distractors));
+
+    var box = document.getElementById("opts");
+    box.innerHTML = "";
+    options.forEach(function(k){
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "opt";
+      b.innerHTML = '<span class="tick" aria-hidden="true"></span><span>' + TRAPS[k].name + '</span>';
+      b.addEventListener("click", function(){ answer(k, b); });
+      box.appendChild(b);
+    });
+  }
+
+  function answer(picked, btn){
+    if (traps.answered) return;
+    traps.answered = true;
+    var c = traps.deck[traps.idx];
+    var correct = picked === c.k;
+    if (correct) traps.right++;
+    else traps.misses[c.k] = (traps.misses[c.k] || 0) + 1;
+
+    document.querySelectorAll("#opts .opt").forEach(function(b){
+      b.disabled = true;
+      var label = b.querySelector("span:last-child").textContent;
+      if (label === TRAPS[c.k].name){
+        b.classList.add("is-ok");
+        b.querySelector(".tick").textContent = "✓";
+      } else if (b === btn){
+        b.classList.add("is-no");
+        b.querySelector(".tick").textContent = "✕";
+      } else {
+        b.classList.add("dim");
+      }
+    });
+
+    document.getElementById("pgScore").textContent = traps.right + " верни";
+    document.getElementById("feedback").innerHTML =
+      '<div class="feedback" style="--c:var(' + (correct ? "--ok" : "--no") + ')">' +
+        '<p class="verdict-line">' + (correct ? "Точно този." : "Тук работи друг: " + TRAPS[c.k].name + ".") + '</p>' +
+        '<p>' + c.why + '</p>' +
+        '<div class="reframe"><span>По-балансирано звучи така</span><p>' + c.re + '</p></div>' +
+      '</div>';
+    document.getElementById("nextWrap").hidden = false;
+    document.getElementById("bNext").textContent =
+      (traps.idx + 1 >= traps.deck.length) ? "Виж резултата" : "Следваща карта";
+    document.getElementById("bNext").focus();
+  }
+
+  document.getElementById("bNext").addEventListener("click", function(){
+    if (traps.idx + 1 >= traps.deck.length) finish();
+    else { traps.idx++; renderCard(); }
+  });
+
+  function finish(){
+    document.getElementById("playArea").hidden = true;
+    var area = document.getElementById("resultArea");
+    area.hidden = false;
+
+    var missed = Object.keys(traps.misses).sort(function(a,b){ return traps.misses[b] - traps.misses[a]; });
+    var html = '<div class="result">';
+    html += '<span class="eyebrow">Резултат</span>';
+    html += '<h2 style="margin-top:10px">Разпознахте <span class="score">' + traps.right + '</span> от <span class="score">' + traps.deck.length + '</span></h2>';
+
+    if (!missed.length){
+      html += '<p class="lead">Всички до един. Разпознаването е първата половина от работата — втората е да го правите в момента, в който мисълта се появи, а не когато е на екрана пред вас.</p>';
+    } else {
+      html += '<p class="lead">Броят значи по-малко от това кои капани се изплъзнаха. Обикновено най-трудно се разпознава онзи, който ползваме най-често — той просто звучи като истина.</p>';
+      html += '<div class="tally">';
+      missed.forEach(function(k){
+        html += '<div class="tally-row"><div><b class="miss">' + TRAPS[k].name + '</b>' +
+                '<p style="font-size:.87rem;color:var(--muted-t)">' + TRAPS[k].blurb + '</p></div>' +
+                '<span class="n">' + traps.misses[k] + ' пропуск' + (traps.misses[k] > 1 ? "а" : "") + '</span></div>';
+      });
+      html += '</div>';
+    }
+
+    html += '<div class="actions">' +
+              '<button type="button" class="btn primary" id="bAgain">Ново раздаване</button>' +
+              '<button type="button" class="btn" id="bHome">Към началото</button>' +
+            '</div></div>';
+    area.innerHTML = html;
+    document.getElementById("bAgain").addEventListener("click", function(){ traps.start(); });
+    document.getElementById("bHome").addEventListener("click", function(){ go("home"); });
+  }
+
+  (function buildRef(){
+    var box = document.getElementById("refList");
+    TRAP_KEYS.forEach(function(k){
+      var d = document.createElement("div");
+      d.className = "ref-item";
+      d.innerHTML = "<b>" + TRAPS[k].name + "</b><p>" + TRAPS[k].blurb + "</p>";
+      box.appendChild(d);
+    });
+  })();
+
+  /* ================= boot ================= */
+  show((location.hash || "").replace("#/", ""));
+})();
+</script>
+
+</body>
+</html>

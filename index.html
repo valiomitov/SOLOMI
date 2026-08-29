@@ -216,6 +216,22 @@
   .step h3{font-size:1.05rem;margin-bottom:8px}
   .step p{color:var(--muted);font-size:.9rem}
 
+  /* Мнения */
+  .rev-summary{display:flex;align-items:center;justify-content:center;gap:12px 18px;flex-wrap:wrap;
+    margin:-24px 0 40px;color:var(--muted);font-size:.95rem}
+  .rev-summary .score{font-family:Georgia,serif;font-size:2rem;font-weight:600;color:var(--green-dark);line-height:1}
+  .rev-summary .stars{color:var(--accent);letter-spacing:3px;font-size:1.05rem}
+  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+  .rev{background:var(--paper);border:1px solid var(--sand);border-radius:var(--radius);
+    padding:26px 26px 22px;display:flex;flex-direction:column;gap:14px}
+  .rev .stars{color:var(--accent);letter-spacing:3px;font-size:.95rem;line-height:1}
+  .rev blockquote{margin:0;color:#4a564d;font-size:.95rem;line-height:1.62}
+  .rev .who{margin-top:auto;padding-top:8px;border-top:1px solid var(--sand);font-size:.82rem;color:var(--muted)}
+  .rev .who b{display:block;font-weight:600;font-size:.92rem;color:var(--green-dark);margin-bottom:2px}
+  .rev-foot{text-align:center;margin-top:36px}
+  .rev-note{font-size:.82rem;color:var(--muted);margin-top:16px;max-width:56ch;margin-left:auto;margin-right:auto}
+  @media(max-width:880px){.reviews-grid{grid-template-columns:1fr}}
+
   /* Quote */
   .quote{text-align:center;max-width:64ch;margin:0 auto}
   .quote p{font-family:Georgia,serif;font-size:clamp(1.15rem,3vw,1.6rem);font-style:italic;color:var(--green-dark);line-height:1.5}
@@ -267,6 +283,7 @@
       <a href="#about" data-i18n="nav_about">За мен</a>
       <a href="#services" data-i18n="nav_services">Услуги</a>
       <a href="#approach" data-i18n="nav_approach">Подход</a>
+      <a href="#reviews" data-i18n="nav_reviews">Мнения</a>
       <a href="#contact" data-i18n="nav_contact">Контакти</a>
       <a href="#contact" class="btn" style="padding:10px 22px" data-i18n="nav_cta">Запазете час</a>
     </div>
@@ -282,6 +299,7 @@
     <a href="#about" onclick="this.parentNode.classList.remove('open')" data-i18n="nav_about">За мен</a>
     <a href="#services" onclick="this.parentNode.classList.remove('open')" data-i18n="nav_services">Услуги</a>
     <a href="#approach" onclick="this.parentNode.classList.remove('open')" data-i18n="nav_approach">Подход</a>
+    <a href="#reviews" onclick="this.parentNode.classList.remove('open')" data-i18n="nav_reviews">Мнения</a>
     <a href="#contact" onclick="this.parentNode.classList.remove('open')" data-i18n="nav_contact">Контакти</a>
     <a href="#contact" class="btn" onclick="this.parentNode.classList.remove('open')" data-i18n="nav_cta">Запазете час</a>
   </div>
@@ -463,6 +481,48 @@
   </section>
 </div>
 
+<!-- МНЕНИЯ -->
+<div class="wrap">
+  <section id="reviews">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="rev_eyebrow">Мнения</p>
+      <h2 data-i18n="rev_h2">Какво казват хората</h2>
+      <p data-i18n="rev_p">Публикувани в Google от хора, които са работили с мен. Показани са дословно.</p>
+    </div>
+
+    <div class="rev-summary">
+      <span class="score">5,0</span>
+      <span class="stars" aria-hidden="true">★★★★★</span>
+      <span data-i18n="rev_count">9 мнения в Google</span>
+    </div>
+
+    <div class="reviews-grid">
+      <figure class="rev">
+        <div class="stars" aria-label="5 от 5 звезди">★★★★★</div>
+        <blockquote data-i18n="rev1">Атмосферата на доверие и сигурност, която Александра Соломи успява от първите часове да създаде е наистина впечатляваща. Препоръчвам я като прекрасен професионалист. Благодаря Ви за пълноценно споделеното време и помощта.</blockquote>
+        <figcaption class="who" data-i18n="rev1m"><b>Пламена А.</b>Local Guide · преди 3 години</figcaption>
+      </figure>
+
+      <figure class="rev">
+        <div class="stars" aria-label="5 от 5 звезди">★★★★★</div>
+        <blockquote data-i18n="rev2">Силно препоръчвам А. Соломи. Страхотен специалист. Вниква в същината на проблема и не спира, докато не се увери, че е стигнала където трябва. Има много внимателен подход и вижда кога трябва да се направят промени в него…</blockquote>
+        <figcaption class="who" data-i18n="rev2m"><b>Йордан Костов</b>преди 4 години</figcaption>
+      </figure>
+
+      <figure class="rev">
+        <div class="stars" aria-label="5 от 5 звезди">★★★★★</div>
+        <blockquote data-i18n="rev3">Горещо препоръчвам А. Соломи. Прекрасен професионалист. Сеансите ни преминават спокойно, след всеки се чувствам по-мотивирана и енергична. Благодаря! До нови срещи!</blockquote>
+        <figcaption class="who" data-i18n="rev3m"><b>Надежда Иванова</b>преди 3 години</figcaption>
+      </figure>
+    </div>
+
+    <div class="rev-foot">
+      <a href="https://maps.app.goo.gl/qWxwBkeUj1CfSCGo7" class="btn ghost" target="_blank" rel="noopener" data-i18n="rev_btn">Вижте всички мнения в Google</a>
+      <p class="rev-note" data-i18n="rev_note">Мненията са публикувани в Google Business профила и не могат да бъдат редактирани от нас.</p>
+    </div>
+  </section>
+</div>
+
 <!-- CONTACT -->
 <div class="wrap">
   <section id="contact">
@@ -567,6 +627,20 @@
     cap2: "Μεταπτυχιακό «Συμβουλευτική Ψυχολογία»<span>Ελεύθερο Πανεπιστήμιο Μπουργκάς</span>",
     cap3: "«Ψυχιατρική για ψυχολόγους»<span>Ιατρικό Πανεπιστήμιο — Φιλιππούπολη</span>",
     cap4: "«Οργανωσιακή Ψυχολογία»<span>Πανεπιστήμιο Βέλικο Τάρνοβο «Άγ. Κύριλλος και Μεθόδιος»</span>",
+
+    nav_reviews: "Γνώμες",
+    rev_eyebrow: "Γνώμες",
+    rev_h2: "Τι λένε οι άνθρωποι",
+    rev_p: "Δημοσιευμένες στο Google από ανθρώπους που έχουν συνεργαστεί μαζί μου. Παρατίθενται αυτούσιες, σε μετάφραση από τα βουλγαρικά.",
+    rev_count: "9 γνώμες στο Google",
+    rev1: "Η ατμόσφαιρα εμπιστοσύνης και ασφάλειας που καταφέρνει να δημιουργήσει η Αλεξάνδρα Σολωμή από τις πρώτες κιόλας ώρες είναι πραγματικά εντυπωσιακή. Τη συνιστώ ως εξαιρετική επαγγελματία. Σας ευχαριστώ για τον ουσιαστικό χρόνο που μοιραστήκαμε και για τη βοήθεια.",
+    rev1m: "<b>Πλάμενα Α.</b>Local Guide · πριν από 3 χρόνια",
+    rev2: "Συνιστώ ανεπιφύλακτα την Α. Σολωμή. Εξαιρετική επαγγελματίας. Εμβαθύνει στην ουσία του προβλήματος και δεν σταματά μέχρι να βεβαιωθεί ότι έφτασε εκεί που πρέπει. Έχει πολύ προσεκτική προσέγγιση και βλέπει πότε χρειάζεται να γίνουν αλλαγές σε αυτήν…",
+    rev2m: "<b>Γιόρνταν Κόστοφ</b>πριν από 4 χρόνια",
+    rev3: "Συνιστώ θερμά την Α. Σολωμή. Υπέροχη επαγγελματίας. Οι συνεδρίες μας κυλούν ήρεμα και μετά από κάθε μία νιώθω πιο δραστήρια και με περισσότερα κίνητρα. Ευχαριστώ! Εις νέας συναντήσεις!",
+    rev3m: "<b>Ναντέζντα Ιβάνοβα</b>πριν από 3 χρόνια",
+    rev_btn: "Δείτε όλες τις γνώμες στο Google",
+    rev_note: "Οι γνώμες είναι δημοσιευμένες στο προφίλ Google Business και δεν μπορούν να επεξεργαστούν από εμάς.",
 
     srv_eyebrow: "Υπηρεσίες",
     srv_h2: "Με τι μπορώ να σας βοηθήσω",

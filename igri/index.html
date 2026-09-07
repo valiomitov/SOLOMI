@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Между сесиите — упражнения на Александра Соломи</title>
-<meta name="description" content="Упражнения между терапевтичните сесии: балансов модел по Пезешкиан и карти за разпознаване на мисловни капани.">
+<meta name="description" content="Упражнения между терапевтичните сесии: балансов модел, мисловни капани, дишане и ляво–дясно, стълбица на страха, кариерни ценности и термометър на гнева.">
 <meta name="theme-color" content="#eceef1" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#13171e" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://alexandrasolomi.com/igri/">
@@ -23,6 +23,8 @@
   --ok-wash:rgba(34,125,120,.10); --no-wash:rgba(169,79,82,.10);
   --focus:#227d78; --grid:rgba(27,33,43,.14);
   --shadow:0 1px 2px rgba(20,26,36,.05), 0 12px 32px -12px rgba(20,26,36,.18);
+  --t0:#2f7d4f; --t1:#4e8a46; --t2:#6f943d; --t3:#8d9a35; --t4:#a8992d;
+  --t5:#bd8c28; --t6:#c87a2a; --t7:#cc6430; --t8:#c74e36; --t9:#bd3b3c; --t10:#ad2f3f;
   --measure:64ch;
 }
 @media (prefers-color-scheme: dark){
@@ -35,6 +37,8 @@
     --ok-wash:rgba(92,195,188,.12); --no-wash:rgba(224,133,137,.12);
     --focus:#5cc3bc; --grid:rgba(231,234,239,.16);
     --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px -12px rgba(0,0,0,.6);
+    --t0:#58c184; --t1:#79c86f; --t2:#9acc60; --t3:#b7cc55; --t4:#d0c74f;
+    --t5:#e0b34c; --t6:#e89c50; --t7:#ea8258; --t8:#e66b60; --t9:#dd5866; --t10:#d04a6a;
   }
 }
 :root[data-theme="dark"]{
@@ -46,6 +50,8 @@
   --ok-wash:rgba(92,195,188,.12); --no-wash:rgba(224,133,137,.12);
   --focus:#5cc3bc; --grid:rgba(231,234,239,.16);
   --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px -12px rgba(0,0,0,.6);
+  --t0:#58c184; --t1:#79c86f; --t2:#9acc60; --t3:#b7cc55; --t4:#d0c74f;
+  --t5:#e0b34c; --t6:#e89c50; --t7:#ea8258; --t8:#e66b60; --t9:#dd5866; --t10:#d04a6a;
 }
 
 *{box-sizing:border-box}
@@ -265,6 +271,112 @@ details.ref summary:focus-visible{outline:2px solid var(--focus);outline-offset:
 
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}}
 @media print{.topbar,.actions,.modes,input[type=range]{display:none}body{background:#fff;color:#000}.viz{position:static}}
+
+/* ---------- breathing / bilateral ---------- */
+.tool-wrap{max-width:720px;margin:0 auto}
+.seg{display:inline-flex;gap:4px;padding:4px;background:var(--surface-2);border-radius:99px;flex-wrap:wrap}
+.seg button{font-size:.85rem;font-weight:500;border:0;cursor:pointer;padding:8px 16px;border-radius:99px;
+  background:transparent;color:var(--muted-t);transition:background .2s,color .2s}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.seg button:hover{color:var(--ink)}
+.seg button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:32px 24px;
+  display:grid;place-items:center;gap:18px;margin:26px 0}
+.orb-box{width:min(260px,62vw);aspect-ratio:1;display:grid;place-items:center;position:relative}
+.orb-ring{position:absolute;inset:0;border-radius:50%;border:1px dashed var(--line-strong);opacity:.7}
+.orb{width:100%;height:100%;border-radius:50%;background:var(--s1);opacity:.28;transform:scale(.45);
+  transition-property:transform;transition-timing-function:cubic-bezier(.37,0,.63,1)}
+.phase{font-family:Literata,Georgia,serif;font-size:1.35rem;color:var(--ink);text-align:center;min-height:1.6em}
+.phase small{display:block;font-family:"Golos Text",sans-serif;font-size:.8rem;color:var(--muted-t);font-weight:500;margin-top:4px}
+
+.bl-track{width:100%;height:78px;border-radius:14px;background:var(--surface-2);position:relative;overflow:hidden}
+.bl-track::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line-strong);opacity:.6}
+.bl-dot{position:absolute;top:50%;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;
+  background:var(--s1);box-shadow:0 0 0 8px var(--ok-wash)}
+.opt-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;
+  font-size:.88rem;color:var(--ink-soft)}
+.opt-row label{display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.opt-row input[type=checkbox]{width:18px;height:18px;accent-color:var(--s1);cursor:pointer}
+.field{display:flex;flex-direction:column;gap:6px;font-size:.82rem;color:var(--muted-t);min-width:180px;flex:1}
+.field b{font-weight:600;color:var(--ink-soft);font-size:.86rem}
+.safety{border-left:3px solid var(--no);padding:2px 0 2px 16px;font-size:.88rem;color:var(--ink-soft);margin-top:26px}
+.safety b{color:var(--no)}
+.big-stop{background:var(--no);border-color:var(--no);color:#fff}
+.big-stop:hover{background:var(--no);border-color:var(--no);color:#fff;opacity:.9}
+
+/* ---------- values sort ---------- */
+.value-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;
+  padding:clamp(30px,6vw,52px) 24px;text-align:center;margin:24px 0}
+.value-card h3{font-family:Literata,Georgia,serif;font-size:clamp(1.5rem,4vw,2rem);color:var(--ink)}
+.value-card p{font-size:.9rem;color:var(--muted-t);margin-top:10px}
+.pile-btns{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pile-btns button{padding:16px 10px;border-radius:14px;border:1px solid var(--line);background:var(--surface);
+  color:var(--ink);cursor:pointer;font-size:.9rem;font-weight:500;transition:border-color .18s,background .18s}
+.pile-btns button:hover{border-color:var(--line-strong);background:var(--surface-2)}
+.pile-btns button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.pile-btns button.top{border-color:var(--s2);color:var(--s2)}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:9px 16px;
+  font-size:.88rem;cursor:pointer;color:var(--ink-soft);transition:.18s}
+.chip:hover{border-color:var(--line-strong)}
+.chip[aria-pressed="true"]{background:var(--s2);border-color:var(--s2);color:var(--paper);font-weight:500}
+.chip:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.chip.plain{cursor:default}
+.chip.plain:hover{border-color:var(--line)}
+.top5{counter-reset:v;display:flex;flex-direction:column;gap:0;margin-top:20px}
+.top5 li{list-style:none;display:flex;gap:14px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line)}
+.top5 li:last-child{border-bottom:0}
+.top5 li::before{counter-increment:v;content:counter(v);font-family:"JetBrains Mono",monospace;
+  font-size:.8rem;color:var(--muted-t);width:1.2em}
+.top5 b{font-family:Literata,Georgia,serif;font-size:1.1rem;font-weight:600}
+
+/* ---------- exposure ladder ---------- */
+.ladder-form{display:grid;gap:12px;background:var(--surface);border:1px solid var(--line);
+  border-radius:16px;padding:20px}
+.ladder-form input[type=text]{width:100%;font:inherit;font-size:.95rem;padding:11px 14px;border-radius:10px;
+  border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+.ladder-form input[type=text]:focus-visible{outline:2px solid var(--focus);outline-offset:1px;border-color:transparent}
+.ladder{display:flex;flex-direction:column-reverse;gap:10px;margin-top:24px}
+.rung{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);
+  border-radius:14px;padding:14px 16px;position:relative;overflow:hidden}
+.rung::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--rc)}
+.rung .lvl{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums;font-size:.95rem;
+  font-weight:600;color:var(--rc);width:3.2em;flex:none;text-align:right}
+.rung .txt{flex:1;font-size:.95rem}
+.rung.done .txt{text-decoration:line-through;color:var(--muted-t)}
+.rung .x{border:0;background:transparent;color:var(--muted-t);cursor:pointer;font-size:1.1rem;
+  line-height:1;padding:6px;border-radius:8px}
+.rung .x:hover{color:var(--no);background:var(--no-wash)}
+.rung input[type=checkbox]{width:20px;height:20px;accent-color:var(--s1);cursor:pointer;flex:none}
+.ladder-empty{text-align:center;color:var(--muted-t);font-size:.9rem;padding:26px 0}
+
+/* ---------- anger thermometer ---------- */
+.therm-grid{display:grid;grid-template-columns:120px 1fr;gap:clamp(20px,4vw,40px);align-items:start;margin-top:28px}
+@media(max-width:640px){.therm-grid{grid-template-columns:96px 1fr;gap:18px}}
+.therm{display:flex;flex-direction:column-reverse;gap:5px}
+.therm button{border:1px solid var(--line);background:var(--surface);border-radius:9px;padding:9px 6px;
+  cursor:pointer;font-family:"JetBrains Mono",monospace;font-size:.85rem;font-weight:600;
+  color:var(--muted-t);transition:.16s}
+.therm button:hover{border-color:var(--line-strong)}
+.therm button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.therm button[aria-pressed="true"]{color:var(--paper);border-color:transparent}
+.therm-read h3{font-family:Literata,Georgia,serif;font-size:clamp(1.3rem,3.4vw,1.7rem);color:var(--tc)}
+.therm-read .row{margin-top:18px}
+.therm-read .row span{display:block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:600;color:var(--muted-t);margin-bottom:5px}
+.therm-read .row p{font-size:.98rem;color:var(--ink-soft)}
+.body-wrap{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin-top:30px;
+  background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px}
+.body-wrap svg{width:110px;height:auto;flex:none}
+.zone{fill:var(--surface-2);stroke:var(--line-strong);stroke-width:1.2;cursor:pointer;transition:fill .18s}
+.zone:hover{fill:var(--line)}
+.zone[aria-pressed="true"]{fill:var(--tc);stroke:var(--tc)}
+.zone:focus-visible{outline:2px solid var(--focus)}
+.body-note{flex:1;min-width:190px;font-size:.92rem;color:var(--ink-soft)}
+.body-note b{display:block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted-t);margin-bottom:6px}
+
 </style>
 
 </head>
@@ -274,10 +386,7 @@ details.ref summary:focus-visible{outline:2px solid var(--focus);outline-offset:
     <button class="brand" id="goHome" type="button">
       <span class="mark">◈</span><strong>Между сесиите</strong>
     </button>
-    <nav>
-      <button type="button" data-go="balans">Балансов модел</button>
-      <button type="button" data-go="kapani">Мисловни капани</button>
-    </nav>
+    <button type="button" class="btn" id="backHome" hidden>← Всички упражнения</button>
   </div>
 </header>
 
@@ -318,6 +427,52 @@ details.ref summary:focus-visible{outline:2px solid var(--focus);outline-offset:
       <h2>Мисловни капани</h2>
       <p>Тревожната мисъл почти никога не лъже открито — тя изкривява. Разпознайте кой капан работи в дадено изречение и вижте как звучи по-балансираната му версия.</p>
       <span class="meta"><span>12 карти</span><span>5 минути</span><span>8 капана</span></span>
+    </button>
+
+    <button class="tool" type="button" data-go="dishane">
+      <svg class="glyph" viewBox="0 0 56 56" aria-hidden="true">
+        <circle cx="28" cy="28" r="21" fill="none" stroke="var(--s1)" stroke-width="1.5" stroke-dasharray="3 4" opacity=".6"></circle>
+        <circle cx="28" cy="28" r="14" fill="var(--s1)" opacity=".2"></circle>
+        <circle cx="28" cy="28" r="7" fill="var(--s1)" opacity=".55"></circle>
+      </svg>
+      <h2>Дишане и ляво–дясно</h2>
+      <p>Когато тялото е избързало пред мисленето. Воден ритъм на дишане и редуване ляво–дясно — успокояващата част от принципа на EMDR, без преработка на спомени.</p>
+      <span class="meta"><span>3 ритъма</span><span>1–2 минути</span><span>Със звук по избор</span></span>
+    </button>
+
+    <button class="tool" type="button" data-go="stalbica">
+      <svg class="glyph" viewBox="0 0 56 56" aria-hidden="true">
+        <rect x="7" y="40" width="9" height="9" rx="2.5" fill="var(--s4)" opacity=".3"></rect>
+        <rect x="19" y="31" width="9" height="18" rx="2.5" fill="var(--s4)" opacity=".5"></rect>
+        <rect x="31" y="20" width="9" height="29" rx="2.5" fill="var(--s4)" opacity=".7"></rect>
+        <rect x="43" y="9" width="9" height="40" rx="2.5" fill="var(--s4)"></rect>
+      </svg>
+      <h2>Стълбица на страха</h2>
+      <p>Избягването успокоява за минути и укрепва страха за години. Постройте своята стълбица — от поносимото до трудното — и отмятайте стъпалата, когато тревогата на всяко спадне сама.</p>
+      <span class="meta"><span>Ваши стъпки</span><span>Седмици</span><span>Запазва се</span></span>
+    </button>
+
+    <button class="tool" type="button" data-go="cennosti">
+      <svg class="glyph" viewBox="0 0 56 56" aria-hidden="true">
+        <rect x="9" y="10" width="38" height="12" rx="3.5" fill="var(--s2)" opacity=".75"></rect>
+        <rect x="9" y="26" width="30" height="12" rx="3.5" fill="var(--s2)" opacity=".45"></rect>
+        <rect x="9" y="42" width="20" height="12" rx="3.5" fill="var(--s2)" opacity=".22"></rect>
+      </svg>
+      <h2>Какво търся в работата</h2>
+      <p>Тридесет карти с неща, които хората искат от работата си. Разпределете ги бързо, после изберете пет — и вижте колко от тях всъщност получавате днес.</p>
+      <span class="meta"><span>30 карти</span><span>7 минути</span><span>Кариерно</span></span>
+    </button>
+
+    <button class="tool" type="button" data-go="termometar">
+      <svg class="glyph" viewBox="0 0 56 56" aria-hidden="true">
+        <rect x="23" y="6" width="10" height="32" rx="5" fill="none" stroke="var(--s3)" stroke-width="2"></rect>
+        <rect x="25.5" y="20" width="5" height="18" fill="var(--s3)"></rect>
+        <circle cx="28" cy="43" r="9" fill="var(--s3)"></circle>
+        <path d="M40 14 h7 M40 22 h5 M40 30 h7" stroke="var(--s2)" stroke-width="2" stroke-linecap="round" opacity=".8"></path>
+      </svg>
+      <h2>Термометър на гнева</h2>
+      <p>За деца и родители. Гневът не идва изведнъж — качва се. Изберете число и вижте какво прави тялото на това ниво и какво още може да помогне там.</p>
+      <span class="meta"><span>0 до 10</span><span>2 минути</span><span>За деца</span></span>
     </button>
   </div>
 
@@ -400,6 +555,171 @@ details.ref summary:focus-visible{outline:2px solid var(--focus);outline-offset:
   </div>
 </section>
 
+<!-- ============ ДИШАНЕ ============ -->
+<section class="shell" id="view-dishane" hidden>
+  <div class="tool-wrap">
+    <div class="hub-head" style="max-width:none">
+      <span class="eyebrow">Успокояване</span>
+      <h1>Дишане и ляво–дясно</h1>
+      <p class="lead">Две упражнения за момент, в който тялото е избързало пред мисленето. Дишането забавя сърдечния ритъм; редуването ляво–дясно заема вниманието и му дава на какво да се хване.</p>
+    </div>
+
+    <div style="margin-top:26px" class="seg" role="group" aria-label="Избор на упражнение">
+      <button type="button" id="brMode1" aria-pressed="true">Дишане</button>
+      <button type="button" id="brMode2" aria-pressed="false">Ляво–дясно</button>
+    </div>
+
+    <!-- breathing -->
+    <div id="brPanel">
+      <div style="margin-top:18px" class="seg" role="group" aria-label="Ритъм на дишане">
+        <button type="button" data-br="478" aria-pressed="true">4 · 7 · 8</button>
+        <button type="button" data-br="box" aria-pressed="false">Квадратно 4·4·4·4</button>
+        <button type="button" data-br="coh" aria-pressed="false">Спокойно 5,5 · 5,5</button>
+      </div>
+      <div class="stage">
+        <div class="orb-box"><span class="orb-ring"></span><span class="orb" id="orb"></span></div>
+        <p class="phase" id="brPhase">Готови?<small>Седнете удобно. Издишайте докрай, преди да започнете.</small></p>
+      </div>
+      <div class="actions" style="justify-content:center">
+        <button type="button" class="btn primary" id="brStart">Започни</button>
+        <button type="button" class="btn" id="brStop" hidden>Спри</button>
+      </div>
+      <p class="rev-note" style="text-align:center;font-size:.84rem;color:var(--muted-t);margin-top:16px">
+        Ако ви се завие свят, спрете и дишайте нормално. Задържането не бива да е насила.</p>
+    </div>
+
+    <!-- bilateral -->
+    <div id="blPanel" hidden>
+      <div class="stage">
+        <div class="bl-track" id="blTrack"><span class="bl-dot" id="blDot"></span></div>
+        <p class="phase" id="blPhase">Следете точката с очи<small>Главата остава неподвижна. Движат се само очите.</small></p>
+      </div>
+      <div class="opt-row">
+        <label class="field"><b>Скорост</b>
+          <input type="range" id="blSpeed" min="60" max="180" step="10" value="110" style="--c:var(--s1)">
+        </label>
+        <label class="field"><b>Продължителност</b>
+          <select id="blDur" style="font:inherit;font-size:.9rem;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink)">
+            <option value="30">30 секунди</option>
+            <option value="60" selected>60 секунди</option>
+            <option value="90">90 секунди</option>
+          </select>
+        </label>
+      </div>
+      <div class="opt-row" style="margin-top:14px">
+        <label><input type="checkbox" id="blSound"> Звук в слушалки</label>
+        <label><input type="checkbox" id="blVibe"> Вибрация (телефон)</label>
+      </div>
+      <div class="actions" style="justify-content:center">
+        <button type="button" class="btn primary" id="blStart">Започни</button>
+        <button type="button" class="btn big-stop" id="blStop" hidden>Спри веднага</button>
+      </div>
+      <div class="safety">
+        <p><b>Важно.</b> Това е упражнение за успокояване, не е EMDR сесия. Не викайте нарочно тежък спомен, докато го правите. Ако все пак изникне нещо силно — спрете, огледайте стаята и назовете на глас пет неща, които виждате. После го запишете и го занесете на сесия.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ЦЕННОСТИ ============ -->
+<section class="shell" id="view-cennosti" hidden>
+  <div class="tool-wrap">
+    <div id="vaPlay">
+      <div class="hub-head" style="max-width:none">
+        <span class="eyebrow">Кариерно ориентиране</span>
+        <h1>Какво търся в работата</h1>
+        <p class="lead">Тридесет неща, които хората искат от работата си. Разпределете ги бързо, без да мислите дълго — първата реакция обикновено е по-честна от премислената.</p>
+      </div>
+      <div class="progress" style="margin-top:28px">
+        <span id="vaLabel">Карта 1 от 30</span>
+        <span class="score" id="vaLeft">30 остават</span>
+      </div>
+      <div class="bar"><i id="vaBar" style="width:0%"></i></div>
+      <div class="value-card"><h3 id="vaName"></h3><p id="vaHint"></p></div>
+      <div class="pile-btns">
+        <button type="button" class="top" data-pile="2">Много важно</button>
+        <button type="button" data-pile="1">Важно</button>
+        <button type="button" data-pile="0">Без значение</button>
+      </div>
+      <div class="actions"><button type="button" class="btn" id="vaReset">Започни отначало</button></div>
+    </div>
+
+    <div id="vaPick" hidden></div>
+    <div id="vaDone" hidden></div>
+  </div>
+</section>
+
+<!-- ============ СТЪЛБИЦА ============ -->
+<section class="shell" id="view-stalbica" hidden>
+  <div class="tool-wrap">
+    <div class="hub-head" style="max-width:none">
+      <span class="eyebrow">Стъпка по стъпка</span>
+      <h1>Стълбица на страха</h1>
+      <p class="lead">Избягването успокоява за минути и укрепва страха за години. Стълбицата обръща реда: започвате от стъпало, което е неприятно, но поносимо, и оставате в него, докато тревогата спадне сама — обикновено наполовина за 20–30 минути. Чак тогава се качвате нагоре.</p>
+    </div>
+
+    <div class="ladder-form" style="margin-top:28px">
+      <label class="field" style="min-width:0"><b>От какво се страхувам</b>
+        <input type="text" id="ldFear" placeholder="например: да говоря пред хора">
+      </label>
+      <label class="field" style="min-width:0"><b>Стъпка</b>
+        <input type="text" id="ldStep" placeholder="например: да задам въпрос на среща с трима колеги">
+      </label>
+      <label class="field" style="min-width:0"><b>Колко тревога ми носи — <span id="ldVal" style="font-family:'JetBrains Mono',monospace">50</span> от 100</b>
+        <input type="range" id="ldLevel" min="0" max="100" step="5" value="50" style="--c:var(--s4)">
+      </label>
+      <div><button type="button" class="btn primary" id="ldAdd">Добави стъпало</button></div>
+    </div>
+
+    <div class="ladder" id="ldList"></div>
+    <p class="ladder-empty" id="ldEmpty">Още няма стъпала. Добавете 5–8 — от най-лекото до най-трудното.</p>
+
+    <div class="actions">
+      <button type="button" class="btn" id="ldSample">Зареди примерна стълбица</button>
+      <button type="button" class="btn" id="ldClear">Изчисти всичко</button>
+    </div>
+
+    <div class="safety">
+      <p><b>Не прескачайте стъпала.</b> Ако при някое тревогата не спада след няколко повторения, стъпалото е твърде високо — разделете го на две по-малки. Излизането по средата, докато тревогата е на върха, учи мозъка точно обратното на желаното.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ТЕРМОМЕТЪР ============ -->
+<section class="shell" id="view-termometar" hidden>
+  <div class="tool-wrap">
+    <div class="hub-head" style="max-width:none">
+      <span class="eyebrow">За деца и родители</span>
+      <h1>Термометър на гнева</h1>
+      <p class="lead">Гневът не идва изведнъж — той се качва. Колкото по-рано детето усети на кое число е, толкова повече избор му остава. Изберете число и вижте какво става в тялото и какво помага там.</p>
+    </div>
+
+    <div class="therm-grid">
+      <div class="therm" id="thScale" role="group" aria-label="Ниво на гнева от 0 до 10"></div>
+      <div class="therm-read" id="thRead"></div>
+    </div>
+
+    <div class="body-wrap">
+      <svg viewBox="0 0 100 200" role="group" aria-label="Къде го усещам в тялото">
+        <ellipse class="zone" data-zone="Главата" cx="50" cy="20" rx="15" ry="17" tabindex="0" role="button" aria-pressed="false"><title>Главата</title></ellipse>
+        <rect class="zone" data-zone="Гърлото" x="42" y="38" width="16" height="12" rx="5" tabindex="0" role="button" aria-pressed="false"><title>Гърлото</title></rect>
+        <rect class="zone" data-zone="Гърдите" x="31" y="52" width="38" height="34" rx="9" tabindex="0" role="button" aria-pressed="false"><title>Гърдите</title></rect>
+        <rect class="zone" data-zone="Коремът" x="34" y="88" width="32" height="30" rx="9" tabindex="0" role="button" aria-pressed="false"><title>Коремът</title></rect>
+        <rect class="zone" data-zone="Ръцете" x="12" y="54" width="15" height="56" rx="7" tabindex="0" role="button" aria-pressed="false"><title>Ръцете</title></rect>
+        <rect class="zone" data-zone="Ръцете" x="73" y="54" width="15" height="56" rx="7" tabindex="0" role="button" aria-pressed="false"><title>Ръцете</title></rect>
+        <rect class="zone" data-zone="Краката" x="34" y="122" width="13" height="66" rx="6" tabindex="0" role="button" aria-pressed="false"><title>Краката</title></rect>
+        <rect class="zone" data-zone="Краката" x="53" y="122" width="13" height="66" rx="6" tabindex="0" role="button" aria-pressed="false"><title>Краката</title></rect>
+      </svg>
+      <p class="body-note" id="thBody"><b>Къде го усещам</b>Докоснете мястото, където го усещате най-силно. Може да са и няколко.</p>
+    </div>
+
+    <div class="safety" style="border-color:var(--line-strong)">
+      <p>За родители: попълвайте го заедно и в спокоен момент, не по време на изблик. Целта не е да се спре гневът, а детето да го разпознае навреме — на 4, докато още има думи, вместо на 9, когато вече няма.</p>
+    </div>
+  </div>
+</section>
+
+
 </main>
 
 <script>
@@ -407,18 +727,17 @@ details.ref summary:focus-visible{outline:2px solid var(--focus);outline-offset:
   "use strict";
 
   /* ================= router ================= */
-  var VIEWS = ["home","balans","kapani"];
+  var VIEWS = ["home","balans","kapani","dishane","stalbica","cennosti","termometar"];
   function show(name){
     if (VIEWS.indexOf(name) === -1) name = "home";
     VIEWS.forEach(function(v){
       document.getElementById("view-" + v).hidden = (v !== name);
     });
-    document.querySelectorAll("nav button").forEach(function(b){
-      if (b.dataset.go === name) b.setAttribute("aria-current","page");
-      else b.removeAttribute("aria-current");
-    });
+    document.getElementById("backHome").hidden = (name === "home");
     window.scrollTo(0, 0);
     if (name === "kapani" && !traps.started) traps.start();
+    if (name === "cennosti") vaRender();
+    if (name !== "dishane"){ if (breath.on) brStop(); blHalt(); }
   }
   function go(name){
     if (location.hash !== "#/" + name) location.hash = "#/" + name;
@@ -431,6 +750,7 @@ details.ref summary:focus-visible{outline:2px solid var(--focus);outline-offset:
     el.addEventListener("click", function(){ go(el.dataset.go); });
   });
   document.getElementById("goHome").addEventListener("click", function(){ go("home"); });
+  document.getElementById("backHome").addEventListener("click", function(){ go("home"); });
 
   /* ================= storage ================= */
   function load(key, fallback){
@@ -832,6 +1152,392 @@ details.ref summary:focus-visible{outline:2px solid var(--focus);outline-offset:
       box.appendChild(d);
     });
   })();
+
+
+  /* ================================================================
+     BREATHING + BILATERAL
+     ================================================================ */
+  var breath = { on:false, timer:null, preset:"478", step:0 };
+  var PRESETS = {
+    "478": [["Вдишайте през носа",4,1],["Задръжте",7,null],["Издишайте бавно през устата",8,0.45]],
+    "box": [["Вдишайте",4,1],["Задръжте",4,null],["Издишайте",4,0.45],["Задръжте",4,null]],
+    "coh": [["Вдишайте",5.5,1],["Издишайте",5.5,0.45]]
+  };
+  var orb = document.getElementById("orb");
+  var brPhase = document.getElementById("brPhase");
+
+  function brSet(html){ brPhase.innerHTML = html; }
+
+  function brRun(){
+    if (!breath.on) return;
+    var seq = PRESETS[breath.preset];
+    var st = seq[breath.step % seq.length];
+    brSet(st[0] + '<small>' + Math.round(st[1]) + ' сек.</small>');
+    if (st[2] !== null){
+      orb.style.transitionDuration = st[1] + "s";
+      orb.style.transform = "scale(" + st[2] + ")";
+    }
+    breath.timer = setTimeout(function(){ breath.step++; brRun(); }, st[1] * 1000);
+  }
+  function brStart(){
+    breath.on = true; breath.step = 0;
+    document.getElementById("brStart").hidden = true;
+    document.getElementById("brStop").hidden = false;
+    brRun();
+  }
+  function brStop(){
+    breath.on = false; clearTimeout(breath.timer);
+    orb.style.transitionDuration = "1s"; orb.style.transform = "scale(.45)";
+    brSet('Спряхте.<small>Забележете как е тялото сега, преди да продължите с деня.</small>');
+    document.getElementById("brStart").hidden = false;
+    document.getElementById("brStop").hidden = true;
+  }
+  document.getElementById("brStart").addEventListener("click", brStart);
+  document.getElementById("brStop").addEventListener("click", brStop);
+  document.querySelectorAll("[data-br]").forEach(function(b){
+    b.addEventListener("click", function(){
+      document.querySelectorAll("[data-br]").forEach(function(o){ o.setAttribute("aria-pressed", String(o === b)); });
+      breath.preset = b.dataset.br;
+      if (breath.on){ clearTimeout(breath.timer); breath.step = 0; brRun(); }
+    });
+  });
+
+  var bl = { on:false, raf:null, t0:0, side:0, ctx:null, endAt:0 };
+  var blDot = document.getElementById("blDot");
+  var blTrack = document.getElementById("blTrack");
+  var blPhase = document.getElementById("blPhase");
+
+  function beep(pan){
+    if (!document.getElementById("blSound").checked) return;
+    try {
+      if (!bl.ctx) bl.ctx = new (window.AudioContext || window.webkitAudioContext)();
+      var c = bl.ctx, o = c.createOscillator(), g = c.createGain(), p = c.createStereoPanner();
+      o.type = "sine"; o.frequency.value = pan < 0 ? 430 : 380;
+      p.pan.value = pan;
+      g.gain.setValueAtTime(0.0001, c.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.09, c.currentTime + 0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001, c.currentTime + 0.14);
+      o.connect(g); g.connect(p); p.connect(c.destination);
+      o.start(); o.stop(c.currentTime + 0.16);
+    } catch(e){}
+  }
+  function buzz(){
+    if (!document.getElementById("blVibe").checked) return;
+    try { if (navigator.vibrate) navigator.vibrate(28); } catch(e){}
+  }
+
+  function blFrame(ts){
+    if (!bl.on) return;
+    if (!bl.t0) bl.t0 = ts;
+    var period = Number(document.getElementById("blSpeed").value) / 100 * 2000; // ms for a full there-and-back
+    var el = ts - bl.t0;
+    var x = (1 - Math.cos(el / period * Math.PI * 2)) / 2;   // 0..1..0
+    var w = blTrack.clientWidth;
+    blDot.style.left = (18 + x * (w - 36)) + "px";
+    var side = x > 0.5 ? 1 : -1;
+    if (side !== bl.side){ bl.side = side; beep(side); buzz(); }
+    var left = Math.max(0, Math.ceil((bl.endAt - Date.now()) / 1000));
+    blPhase.innerHTML = 'Следете точката с очи<small>Остават ' + left + ' сек.</small>';
+    if (Date.now() >= bl.endAt){ blFinish(); return; }
+    bl.raf = requestAnimationFrame(blFrame);
+  }
+  function blStart(){
+    bl.on = true; bl.t0 = 0; bl.side = 0;
+    bl.endAt = Date.now() + Number(document.getElementById("blDur").value) * 1000;
+    document.getElementById("blStart").hidden = true;
+    document.getElementById("blStop").hidden = false;
+    bl.raf = requestAnimationFrame(blFrame);
+  }
+  function blHalt(){
+    bl.on = false;
+    if (bl.raf) cancelAnimationFrame(bl.raf);
+    document.getElementById("blStart").hidden = false;
+    document.getElementById("blStop").hidden = true;
+  }
+  function blFinish(){
+    blHalt();
+    blPhase.innerHTML = 'Готово.<small>Огледайте стаята и назовете наум пет неща, които виждате.</small>';
+  }
+  function blStopNow(){
+    blHalt();
+    blPhase.innerHTML = 'Спряхте.<small>Стъпете здраво на пода и назовете пет неща, които виждате около себе си.</small>';
+  }
+  document.getElementById("blStart").addEventListener("click", blStart);
+  document.getElementById("blStop").addEventListener("click", blStopNow);
+
+  function brMode(which){
+    document.getElementById("brMode1").setAttribute("aria-pressed", String(which === 1));
+    document.getElementById("brMode2").setAttribute("aria-pressed", String(which === 2));
+    document.getElementById("brPanel").hidden = which !== 1;
+    document.getElementById("blPanel").hidden = which !== 2;
+    if (which === 1) blHalt(); else if (breath.on) brStop();
+  }
+  document.getElementById("brMode1").addEventListener("click", function(){ brMode(1); });
+  document.getElementById("brMode2").addEventListener("click", function(){ brMode(2); });
+
+  /* ================================================================
+     VALUES SORT
+     ================================================================ */
+  var VALUES = [
+    ["Сигурност","Да знам, че работата ми няма да изчезне утре."],
+    ["Автономия","Сам да решавам как да свърша работата си."],
+    ["Признание","Да се вижда, когато съм направил нещо добре."],
+    ["Смисъл","Работата ми да значи нещо отвъд парите."],
+    ["Творчество","Да измислям, а не само да изпълнявам."],
+    ["Доход","Заплатата да е висока."],
+    ["Стабилен ритъм","Дните да си приличат, без изненади."],
+    ["Развитие","Винаги да има какво ново да науча."],
+    ["Влияние","Мнението ми да тежи при решенията."],
+    ["Принадлежност","Да усещам екипа като свои хора."],
+    ["Баланс","Работата да свършва, когато си тръгна."],
+    ["Разнообразие","Всеки ден да е различен."],
+    ["Предизвикателство","Задачи, които малко ме плашат."],
+    ["Яснота","Да знам точно какво се очаква от мен."],
+    ["Помагане","Да виждам, че съм улеснил някого."],
+    ["Екипна работа","Да правя нещата заедно с други."],
+    ["Самостоятелност","Да работя сам и на спокойствие."],
+    ["Престиж","Мястото ми да звучи добре, когато го кажа."],
+    ["Гъвкаво време","Сам да определям часовете си."],
+    ["Близост до дома","Пътят до работа да е кратък."],
+    ["Пътуване","Работата да ме извежда на нови места."],
+    ["Учене","Да ме пращат на обучения и да чета ново."],
+    ["Експертност","Да съм човекът, който знае най-много за нещо."],
+    ["Лидерство","Да водя хора."],
+    ["Честност","Да не се налага да се правя на друг."],
+    ["Спокойствие","Работа без напрежение и срокове до последно."],
+    ["Красота","Средата около мен да е приятна."],
+    ["Свобода от контрол","Никой да не наднича над рамото ми."],
+    ["Ясни правила","Да има процедури, на които да стъпя."],
+    ["Следа","Да остане нещо, което носи името ми."]
+  ];
+  var VKEY = "mezhdu_sesiite_values_v1";
+  var va = { i:0, piles:{}, top:[] };
+  var vaSaved = load(VKEY, null);
+  if (vaSaved && typeof vaSaved.i === "number") va = vaSaved;
+
+  function vaSave(){ store(VKEY, va); }
+
+  function vaRender(){
+    var play = document.getElementById("vaPlay"),
+        pick = document.getElementById("vaPick"),
+        done = document.getElementById("vaDone");
+    if (va.top.length){ play.hidden = true; pick.hidden = true; done.hidden = false; vaResult(); return; }
+    if (va.i >= VALUES.length){ play.hidden = true; done.hidden = true; pick.hidden = false; vaPickTop(); return; }
+    play.hidden = false; pick.hidden = true; done.hidden = true;
+    document.getElementById("vaLabel").textContent = "Карта " + (va.i + 1) + " от " + VALUES.length;
+    document.getElementById("vaLeft").textContent = (VALUES.length - va.i) + " остават";
+    document.getElementById("vaBar").style.width = (va.i / VALUES.length * 100) + "%";
+    document.getElementById("vaName").textContent = VALUES[va.i][0];
+    document.getElementById("vaHint").textContent = VALUES[va.i][1];
+  }
+  document.querySelectorAll("#vaPlay [data-pile]").forEach(function(b){
+    b.addEventListener("click", function(){
+      va.piles[VALUES[va.i][0]] = Number(b.dataset.pile);
+      va.i++; vaSave(); vaRender();
+    });
+  });
+  document.getElementById("vaReset").addEventListener("click", function(){
+    va = { i:0, piles:{}, top:[] }; vaSave(); vaRender();
+  });
+
+  function vaPickTop(){
+    var must = VALUES.filter(function(v){ return va.piles[v[0]] === 2; });
+    var pool = must.length >= 5 ? must : VALUES.filter(function(v){ return va.piles[v[0]] >= 1; });
+    var box = document.getElementById("vaPick");
+    box.innerHTML =
+      '<div class="hub-head" style="max-width:none"><span class="eyebrow">Втора стъпка</span>' +
+      '<h1>Изберете пет</h1><p class="lead">Отбелязахте ' + must.length + ' като „много важно“. ' +
+      'Сега трудното: кои пет бихте задържали, ако трябва да се откажете от всички останали?</p></div>' +
+      '<div class="chips" id="vaChips"></div>' +
+      '<div class="actions"><button type="button" class="btn primary" id="vaGo" disabled>Готово</button>' +
+      '<button type="button" class="btn" id="vaBack">Върни се към картите</button></div>';
+    var chips = document.getElementById("vaChips");
+    var sel = [];
+    pool.forEach(function(v){
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "chip"; b.textContent = v[0]; b.setAttribute("aria-pressed","false");
+      b.addEventListener("click", function(){
+        var k = sel.indexOf(v[0]);
+        if (k > -1) sel.splice(k, 1);
+        else { if (sel.length >= 5) return; sel.push(v[0]); }
+        b.setAttribute("aria-pressed", String(sel.indexOf(v[0]) > -1));
+        var go = document.getElementById("vaGo");
+        go.disabled = sel.length !== 5;
+        go.textContent = sel.length === 5 ? "Готово" : "Изберете още " + (5 - sel.length);
+      });
+      chips.appendChild(b);
+    });
+    document.getElementById("vaGo").addEventListener("click", function(){
+      va.top = sel.slice(); vaSave(); vaRender();
+    });
+    document.getElementById("vaBack").addEventListener("click", function(){
+      va.i = 0; va.top = []; vaSave(); vaRender();
+    });
+  }
+
+  function vaResult(){
+    var hintOf = {};
+    VALUES.forEach(function(v){ hintOf[v[0]] = v[1]; });
+    var ignored = VALUES.filter(function(v){ return va.piles[v[0]] === 0; }).length;
+    var box = document.getElementById("vaDone");
+    var html = '<div class="hub-head" style="max-width:none"><span class="eyebrow">Резултат</span>' +
+      '<h1>Вашите пет</h1><p class="lead">Това не е присъда, а моментна снимка. Полезното идва от въпроса: ' +
+      'колко от тези пет получавате в работата си днес?</p></div><ol class="top5">';
+    va.top.forEach(function(n){
+      html += '<li><div><b>' + n + '</b><p style="font-size:.88rem;color:var(--muted-t)">' + (hintOf[n] || "") + '</p></div></li>';
+    });
+    html += '</ol>';
+    html += '<p class="lead" style="margin-top:26px;font-size:.92rem">Отхвърлихте ' + ignored +
+            ' от тридесетте като без значение. Тези също казват нещо — понякога повече от избраните.</p>';
+    html += '<div class="actions"><button type="button" class="btn primary" id="vaAgain">Направи го отново</button></div>';
+    box.innerHTML = html;
+    document.getElementById("vaAgain").addEventListener("click", function(){
+      va = { i:0, piles:{}, top:[] }; vaSave(); vaRender();
+    });
+  }
+
+  /* ================================================================
+     EXPOSURE LADDER
+     ================================================================ */
+  var LKEY = "mezhdu_sesiite_ladder_v1";
+  var ld = load(LKEY, { fear:"", steps:[] });
+  if (!ld.steps) ld = { fear:"", steps:[] };
+
+  var ldFear = document.getElementById("ldFear"),
+      ldStep = document.getElementById("ldStep"),
+      ldLevel = document.getElementById("ldLevel"),
+      ldVal = document.getElementById("ldVal");
+
+  ldFear.value = ld.fear || "";
+  ldFear.addEventListener("input", function(){ ld.fear = ldFear.value; store(LKEY, ld); });
+  ldLevel.addEventListener("input", function(){ ldVal.textContent = ldLevel.value; });
+
+  function ldRender(){
+    var list = document.getElementById("ldList");
+    list.innerHTML = "";
+    var sorted = ld.steps.slice().sort(function(a,b){ return a.l - b.l; });
+    document.getElementById("ldEmpty").hidden = sorted.length > 0;
+    sorted.forEach(function(st){
+      var row = document.createElement("div");
+      row.className = "rung" + (st.done ? " done" : "");
+      row.style.setProperty("--rc", "var(--t" + Math.round(st.l / 10) + ")");
+      row.innerHTML =
+        '<input type="checkbox"' + (st.done ? " checked" : "") + ' aria-label="Направено">' +
+        '<span class="lvl">' + st.l + '</span>' +
+        '<span class="txt"></span>' +
+        '<button type="button" class="x" aria-label="Премахни">✕</button>';
+      row.querySelector(".txt").textContent = st.t;
+      row.querySelector("input").addEventListener("change", function(e){
+        st.done = e.target.checked; store(LKEY, ld); ldRender();
+      });
+      row.querySelector(".x").addEventListener("click", function(){
+        ld.steps = ld.steps.filter(function(o){ return o !== st; });
+        store(LKEY, ld); ldRender();
+      });
+      list.appendChild(row);
+    });
+  }
+  document.getElementById("ldAdd").addEventListener("click", function(){
+    var t = ldStep.value.trim();
+    if (!t) { ldStep.focus(); return; }
+    ld.steps.push({ t:t, l:Number(ldLevel.value), done:false });
+    ldStep.value = ""; store(LKEY, ld); ldRender(); ldStep.focus();
+  });
+  ldStep.addEventListener("keydown", function(e){
+    if (e.key === "Enter") document.getElementById("ldAdd").click();
+  });
+  document.getElementById("ldSample").addEventListener("click", function(){
+    ld = { fear:"Да говоря пред хора", steps:[
+      { t:"Да поздравя съсед, когото почти не познавам", l:15, done:false },
+      { t:"Да попитам продавач за нещо в магазина", l:25, done:false },
+      { t:"Да се обадя по телефона, вместо да напиша съобщение", l:35, done:false },
+      { t:"Да кажа мнението си на среща с трима колеги", l:50, done:false },
+      { t:"Да представя нещо кратко пред екипа", l:65, done:false },
+      { t:"Да задам въпрос на голяма среща", l:75, done:false },
+      { t:"Да изнеса презентация пред двайсет души", l:90, done:false }
+    ]};
+    ldFear.value = ld.fear; store(LKEY, ld); ldRender();
+  });
+  document.getElementById("ldClear").addEventListener("click", function(){
+    ld = { fear:"", steps:[] }; ldFear.value = ""; store(LKEY, ld); ldRender();
+  });
+  ldRender();
+
+  /* ================================================================
+     ANGER THERMOMETER
+     ================================================================ */
+  var BANDS = [
+    { max:1, name:"Спокоен",
+      body:"Тялото е отпуснато. Дишам бавно, без да мисля за това.",
+      help:"Нищо не е нужно. Запомнете как се усеща тук — това е мястото, към което се връщаме." },
+    { max:3, name:"Нещо ме бодна",
+      body:"Може би стискам зъби или ръцете. Все още го забелязвам трудно.",
+      help:"Кажете на глас какво не ви хареса. На това число думите още идват лесно." },
+    { max:5, name:"Загрявам",
+      body:"Лицето се затопля, сърцето бие по-бързо, гласът се вдига.",
+      help:"Излезте за две минути. Пийте вода. Бройте бавно до десет, докато издишвате." },
+    { max:7, name:"Горещо е",
+      body:"Юмруците се стягат, коремът е на топка, мислите се въртят бързо.",
+      help:"Отдалечете се от мястото. Стиснете силно юмруци за пет секунди и пуснете. Три пъти." },
+    { max:9, name:"Ври",
+      body:"Трудно чувам какво ми се говори. Иска ми се да викам или да блъскам.",
+      help:"Само едно нещо: махнете се оттам, преди да се случи нещо. „Трябва ми пауза“ е цяло изречение." },
+    { max:10, name:"Изкипя",
+      body:"Вече не мисля — тялото действа само.",
+      help:"На десет нищо не помага навреме. Точно затова работим по-долу — да го хванем на четири." }
+  ];
+  function bandOf(n){ for (var i=0;i<BANDS.length;i++) if (n <= BANDS[i].max) return BANDS[i]; return BANDS[5]; }
+  function thColor(n){ return "var(--t" + n + ")"; }
+
+  var thScale = document.getElementById("thScale");
+  var thPicked = 0;
+  for (var n = 0; n <= 10; n++){
+    (function(v){
+      var b = document.createElement("button");
+      b.type = "button"; b.textContent = v; b.setAttribute("aria-pressed", String(v === 0));
+      b.addEventListener("click", function(){ thPick(v); });
+      thScale.appendChild(b);
+    })(n);
+  }
+  function thPick(v){
+    thPicked = v;
+    var btns = thScale.querySelectorAll("button");
+    btns.forEach(function(b, i){
+      var on = i === v;
+      b.setAttribute("aria-pressed", String(on));
+      b.style.background = on ? thColor(i) : "";
+    });
+    var band = bandOf(v);
+    var read = document.getElementById("thRead");
+    read.style.setProperty("--tc", thColor(v));
+    read.innerHTML =
+      '<span class="eyebrow">Ниво ' + v + ' от 10</span>' +
+      '<h3 style="margin-top:8px">' + band.name + '</h3>' +
+      '<div class="row"><span>Какво прави тялото ми</span><p>' + band.body + '</p></div>' +
+      '<div class="row"><span>Какво помага тук</span><p>' + band.help + '</p></div>';
+    document.querySelectorAll(".zone").forEach(function(z){ z.style.setProperty("--tc", thColor(v)); });
+  }
+  var thZones = [];
+  document.querySelectorAll(".zone").forEach(function(z){
+    function toggle(){
+      var name = z.dataset.zone;
+      var peers = Array.prototype.filter.call(document.querySelectorAll(".zone"), function(o){ return o.dataset.zone === name; });
+      var now = z.getAttribute("aria-pressed") !== "true";
+      peers.forEach(function(o){ o.setAttribute("aria-pressed", String(now)); });
+      var k = thZones.indexOf(name);
+      if (now && k === -1) thZones.push(name);
+      if (!now && k > -1) thZones.splice(k, 1);
+      var note = document.getElementById("thBody");
+      note.innerHTML = thZones.length
+        ? '<b>Къде го усещам</b>' + thZones.join(", ") + '. Следващия път, когато го усетите точно там, това е знакът — още преди числото да се качи.'
+        : '<b>Къде го усещам</b>Докоснете мястото, където го усещате най-силно. Може да са и няколко.';
+    }
+    z.addEventListener("click", toggle);
+    z.addEventListener("keydown", function(e){
+      if (e.key === "Enter" || e.key === " "){ e.preventDefault(); toggle(); }
+    });
+  });
+  thPick(0);
 
   /* ================= boot ================= */
   show((location.hash || "").replace("#/", ""));

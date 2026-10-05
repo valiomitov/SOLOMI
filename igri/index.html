@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Между сесиите — упражнения на Александра Соломи</title>
-<meta name="description" content="Упражнения между терапевтичните сесии: балансов модел, мисловни капани, дишане и ляво–дясно, стълбица на страха, кариерни ценности и термометър на гнева.">
+<meta name="description" content="Упражнения между терапевтичните сесии: балансов модел, дишане и ляво–дясно, стълбица на страха, кариерни ценности и термометър на гнева.">
 <meta name="theme-color" content="#eceef1" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#13171e" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://alexandrasolomi.com/igri/">
@@ -177,59 +177,12 @@ svg.chart{display:block;width:100%;height:auto;overflow:visible}
   background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:9px;padding:10px 12px;line-height:1.5}
 .step textarea:focus-visible{outline:2px solid var(--focus);outline-offset:1px;border-color:transparent}
 
-/* ---------- thinking traps ---------- */
-.game{max-width:720px;margin:0 auto}
+/* ---------- progress bar (shared) ---------- */
 .progress{display:flex;align-items:center;justify-content:space-between;gap:16px;
   font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-t);font-weight:600}
 .bar{height:3px;background:var(--surface-2);border-radius:99px;overflow:hidden;margin:12px 0 30px}
 .bar i{display:block;height:100%;background:var(--s1);transition:width .35s cubic-bezier(.4,0,.2,1)}
-.thought{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:clamp(24px,4vw,36px);
-  font-family:Literata,Georgia,serif;font-size:clamp(1.15rem,2.6vw,1.45rem);line-height:1.45;
-  position:relative;text-wrap:pretty}
-.thought::before{content:"";position:absolute;top:20px;left:0;width:3px;height:calc(100% - 40px);
-  background:var(--s3);opacity:.5;border-radius:0 3px 3px 0}
-.qlabel{margin:26px 0 12px;font-size:.85rem;color:var(--muted-t)}
-.opts{display:grid;gap:10px}
-.opt{text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:12px;
-  padding:14px 18px;cursor:pointer;color:var(--ink);font-size:.95rem;font-weight:500;
-  transition:border-color .18s,background .18s;display:flex;align-items:center;gap:12px}
-.opt:hover:not(:disabled){border-color:var(--line-strong);background:var(--surface-2)}
-.opt:disabled{cursor:default}
-.opt:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
-.opt .tick{width:20px;height:20px;flex:none;border-radius:50%;border:1.5px solid var(--line-strong);
-  display:grid;place-items:center;font-size:.75rem;font-weight:700;color:var(--paper)}
-.opt.is-ok{border-color:var(--ok);background:var(--ok-wash)}
-.opt.is-ok .tick{background:var(--ok);border-color:var(--ok)}
-.opt.is-no{border-color:var(--no);background:var(--no-wash)}
-.opt.is-no .tick{background:var(--no);border-color:var(--no)}
-.opt.dim{opacity:.45}
-.feedback{margin-top:22px;border-left:3px solid var(--c);padding-left:16px;display:flex;flex-direction:column;gap:10px}
-.feedback .verdict-line{font-weight:600;color:var(--c)}
-.feedback p{font-size:.93rem;color:var(--ink-soft)}
-.reframe{background:var(--surface-2);border-radius:12px;padding:14px 16px}
-.reframe span{display:block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
-  font-weight:600;color:var(--muted-t);margin-bottom:5px}
-.reframe p{font-family:Literata,Georgia,serif;font-size:1rem;color:var(--ink)}
-
 .score{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
-.result h2{font-size:clamp(1.6rem,4vw,2.2rem);margin-bottom:12px}
-.tally{display:flex;flex-direction:column;gap:10px;margin-top:24px}
-.tally-row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
-  padding:12px 0;border-bottom:1px solid var(--line);font-size:.94rem}
-.tally-row:last-child{border-bottom:0}
-.tally-row b{font-weight:600}
-.tally-row .n{font-family:"JetBrains Mono",monospace;font-size:.85rem;color:var(--muted-t);white-space:nowrap}
-.miss{color:var(--no)}
-
-details.ref{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
-details.ref summary{cursor:pointer;font-size:.88rem;font-weight:500;color:var(--ink-soft);list-style:none}
-details.ref summary::-webkit-details-marker{display:none}
-details.ref summary::before{content:"+ ";color:var(--muted-t)}
-details.ref[open] summary::before{content:"− "}
-details.ref summary:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
-.ref-list{display:grid;gap:14px;margin-top:18px}
-.ref-item b{display:block;font-size:.95rem}
-.ref-item p{font-size:.88rem;color:var(--muted-t)}
 
 /* ---------- phones ---------- */
 @media(max-width:560px){
@@ -253,10 +206,6 @@ details.ref summary:focus-visible{outline:2px solid var(--focus);outline-offset:
   .sphere-head{gap:10px}
   .sphere h3{font-size:.98rem}
   .card{padding:18px;border-radius:14px}
-  .thought{padding:22px 20px}
-  .opt{padding:15px 16px;font-size:.93rem}
-  .tally-row{flex-wrap:wrap;gap:4px}
-  .tally-row .n{width:100%}
   .actions .btn{flex:1 1 auto;text-align:center}
   .footnote{margin-top:40px}
 }
@@ -416,19 +365,6 @@ details.ref summary:focus-visible{outline:2px solid var(--focus);outline-offset:
       <span class="meta"><span>4 области</span><span>3–5 минути</span><span>Без верен отговор</span></span>
     </button>
 
-    <button class="tool" type="button" data-go="kapani">
-      <svg class="glyph" viewBox="0 0 56 56" aria-hidden="true">
-        <rect x="6" y="9" width="34" height="26" rx="4" fill="none" stroke="var(--s3)" stroke-width="2" opacity=".45"></rect>
-        <rect x="12" y="15" width="34" height="26" rx="4" fill="var(--surface-2)" stroke="var(--s3)" stroke-width="2"></rect>
-        <path d="M20 24 h18 M20 30 h12" stroke="var(--s3)" stroke-width="2" stroke-linecap="round" opacity=".7"></path>
-        <circle cx="40" cy="44" r="8" fill="var(--surface)" stroke="var(--s1)" stroke-width="2"></circle>
-        <path d="M36.5 44 l2.5 2.5 l4.5 -5" fill="none" stroke="var(--s1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-      </svg>
-      <h2>Мисловни капани</h2>
-      <p>Тревожната мисъл почти никога не лъже открито — тя изкривява. Разпознайте кой капан работи в дадено изречение и вижте как звучи по-балансираната му версия.</p>
-      <span class="meta"><span>12 карти</span><span>5 минути</span><span>8 капана</span></span>
-    </button>
-
     <button class="tool" type="button" data-go="dishane">
       <svg class="glyph" viewBox="0 0 56 56" aria-hidden="true">
         <circle cx="28" cy="28" r="21" fill="none" stroke="var(--s1)" stroke-width="1.5" stroke-dasharray="3 4" opacity=".6"></circle>
@@ -524,34 +460,6 @@ details.ref summary:focus-visible{outline:2px solid var(--focus);outline-offset:
       </div>
       <div class="card reading" id="reading"></div>
     </aside>
-  </div>
-</section>
-
-<!-- ============ TRAPS ============ -->
-<section class="shell" id="view-kapani" hidden>
-  <div class="game">
-    <div id="playArea">
-      <div class="progress">
-        <span id="pgLabel">Карта 1 от 12</span>
-        <span class="score" id="pgScore">0 верни</span>
-      </div>
-      <div class="bar"><i id="pgBar" style="width:0%"></i></div>
-
-      <div class="thought"><span id="thoughtText"></span></div>
-      <p class="qlabel">Кой капан работи в това изречение?</p>
-      <div class="opts" id="opts"></div>
-      <div id="feedback"></div>
-      <div class="actions" id="nextWrap" hidden>
-        <button type="button" class="btn primary" id="bNext">Следваща карта</button>
-      </div>
-    </div>
-
-    <div id="resultArea" hidden></div>
-
-    <details class="ref">
-      <summary>Осемте капана — справка</summary>
-      <div class="ref-list" id="refList"></div>
-    </details>
   </div>
 </section>
 
@@ -727,7 +635,7 @@ details.ref summary:focus-visible{outline:2px solid var(--focus);outline-offset:
   "use strict";
 
   /* ================= router ================= */
-  var VIEWS = ["home","balans","kapani","dishane","stalbica","cennosti","termometar"];
+  var VIEWS = ["home","balans","dishane","stalbica","cennosti","termometar"];
   function show(name){
     if (VIEWS.indexOf(name) === -1) name = "home";
     VIEWS.forEach(function(v){
@@ -735,7 +643,6 @@ details.ref summary:focus-visible{outline:2px solid var(--focus);outline-offset:
     });
     document.getElementById("backHome").hidden = (name === "home");
     window.scrollTo(0, 0);
-    if (name === "kapani" && !traps.started) traps.start();
     if (name === "cennosti") vaRender();
     if (name !== "dishane"){ if (breath.on) brStop(); blHalt(); }
   }
@@ -956,203 +863,6 @@ details.ref summary:focus-visible{outline:2px solid var(--focus);outline-offset:
   document.getElementById("bPrint").addEventListener("click", function(){ window.print(); });
   setMode(bs.mode);
   buildReading(norm(bs.now), norm(bs.want));
-
-  /* ================================================================
-     THINKING TRAPS
-     ================================================================ */
-  var TRAPS = {
-    over:   { name:"Свръхобобщение",        blurb:"Един случай се превръща в правило. Разпознава се по думите „винаги“, „никога“, „всички“, „всеки път“." },
-    mind:   { name:"Четене на мисли",       blurb:"Приемам, че знам какво мисли другият за мен — без той да го е казал и без да съм проверил." },
-    cat:    { name:"Катастрофизиране",      blurb:"Направо към най-лошия възможен изход, прескачайки всички по-вероятни между него и сега." },
-    bw:     { name:"Черно-бяло мислене",    blurb:"Само две възможности: съвършено или провал. Средното — тоест почти целият живот — изчезва." },
-    emo:    { name:"Емоционално доказателство", blurb:"Щом го чувствам силно, значи е вярно. Емоцията се приема за доказателство вместо за сигнал." },
-    pers:   { name:"Персонализиране",       blurb:"Поемам отговорност за нещо, което до голяма степен не зависи от мен." },
-    must:   { name:"Тиранията на „трябва“", blurb:"Вътрешни правила без автор, които не мотивират, а произвеждат вина и срам." },
-    filter: { name:"Филтър",                blurb:"От десет неща виждам едното лошо. Доброто не се брои, защото „не е било истинско“." }
-  };
-  var TRAP_KEYS = Object.keys(TRAPS);
-
-  var CARDS = [
-    { t:"Не ми отговори на съобщението — явно ѝ е писнало от мен.", k:"mind",
-      why:"Мълчанието е факт; „писнало ѝ е“ е тълкуване. Между двете има десетки други обяснения — работа, изтощение, забравен телефон.",
-      re:"Не ми отговори. Не знам защо. Ако ми е важно, мога да попитам." },
-    { t:"Изпуснах един срок — както винаги провалям всичко важно.", k:"over",
-      why:"„Както винаги“ и „всичко“ са думите, които издават капана. Един срок се превръща в присъда за целия живот.",
-      re:"Изпуснах този срок. Случвало ми се е и преди, но не всеки път — и има какво да науча от него." },
-    { t:"Ако не се справя перфектно на изпита, значи съм провал.", k:"bw",
-      why:"Между „перфектно“ и „провал“ стои цялата скала, по която реално се движат хората.",
-      re:"Искам да се представя добре. Каквото и да е представянето ми, то е резултат от един изпит, а не оценка за мен." },
-    { t:"Чувствам се безполезен, значи наистина съм безполезен.", k:"emo",
-      why:"Емоцията е информация за състоянието ви, не доказателство за факт. Тъгата прави безполезността да звучи като истина.",
-      re:"В момента се чувствам безполезен. Това е тежко чувство — и не е същото като да съм безполезен." },
-    { t:"Ако тръгна с колата в този дъжд, ще катастрофирам и всичко ще свърши.", k:"cat",
-      why:"Умът прескача от „вали“ директно до най-лошия възможен край, без нито една от по-вероятните стъпки между тях.",
-      re:"Вали и пътят е хлъзгав. Мога да карам по-бавно, да тръгна по-рано или да отложа." },
-    { t:"Детето ми се държи зле в училище — значи съм лош родител.", k:"pers",
-      why:"Поведението на детето има много източници: възраст, класа, приятели, сън. Родителят е един от тях, не единственият.",
-      re:"Нещо в училище не върви. Част от него зависи от мен и мога да се заема точно с тази част." },
-    { t:"Трябваше да се обадя по-рано. Трябва да съм по-организиран. Трябва да мога сам.", k:"must",
-      why:"Три правила без автор в едно изречение. Те не подтикват към действие — произвеждат вина.",
-      re:"Бих искал да се обадя по-рано. Ще ми е по-леко, ако съм по-организиран. Мога и да помоля за помощ." },
-    { t:"Похвалиха ме за презентацията, но само от учтивост. Важното е, че се запънах в началото.", k:"filter",
-      why:"Похвалата е обезсилена, грешката е увеличена. Остава само доказателството, което потвърждава очакването.",
-      re:"Запънах се в началото и после се справих. И двете са част от една и съща презентация." },
-    { t:"Шефът мина покрай мен, без да ме погледне — сигурно съм сгрешил нещо.", k:"mind",
-      why:"Един поглед се тълкува като оценка. Липсата на информация се запълва с най-тревожното обяснение.",
-      re:"Мина, без да ме погледне. Не знам какво означава. Ако има проблем, обикновено ми се казва." },
-    { t:"Или ще спазя диетата съвършено, или няма смисъл изобщо.", k:"bw",
-      why:"Точно това мислене превръща едно отклонение в отказ от целия план.",
-      re:"Днес се отклоних. Утре продължавам оттам, докъдето съм стигнал." },
-    { t:"Страх ме е да летя, значи летенето наистина е опасно.", k:"emo",
-      why:"Интензивността на страха се приема за мярка на реалния риск. Двете почти не са свързани.",
-      re:"Страх ме е да летя. Страхът е истински; опасността е отделен въпрос, на който има отговор." },
-    { t:"Ако кажа не, ще ме намразят и ще остана съвсем сам.", k:"cat",
-      why:"От един отказ до пълната самота — без нито една междинна стъпка. Точно тази верига пречи да поставяме граници.",
-      re:"Ако кажа не, някой може да е недоволен. Отношенията, които издържат само на „да“, така или иначе са крехки." },
-    { t:"Изкарах шестици по всички предмети, но тройката по химия показва какъв съм всъщност.", k:"filter",
-      why:"Едната оценка се приема за истината, останалите — за случайност. Филтърът пропуска само потвърждаващото.",
-      re:"Справям се добре по повечето предмети и по-трудно с химията. И двете са верни." },
-    { t:"Трябва да се справям, без да моля никого за помощ.", k:"must",
-      why:"Правило, което звучи като сила, а на практика оставя човека сам точно когато има най-голяма нужда.",
-      re:"Мога много неща сам. Да помоля за помощ, когато ми е трудно, също е умение." },
-    { t:"Един приятел не се обади за рождения ми ден — на никого не му пука за мен.", k:"over",
-      why:"От един човек към „никой“. Едно наблюдение се разширява до всички отношения наведнъж.",
-      re:"Този приятел не се обади и ме заболя. Други се обадиха." },
-    { t:"Пътуването се отмени заради времето. Ако не бях предложил тази дата, всичко щеше да е наред.", k:"pers",
-      why:"Времето не зависи от избора на дата. Вината се поема за събитие извън всякакъв контрол.",
-      re:"Времето обърка плана. Може да изберем друга дата." }
-  ];
-
-  var ROUND = 12;
-  var traps = {
-    started:false, deck:[], idx:0, right:0, misses:{}, answered:false
-  };
-
-  function shuffled(a){
-    var arr = a.slice();
-    for (var i = arr.length - 1; i > 0; i--){
-      var j = Math.floor(Math.random() * (i + 1));
-      var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
-    }
-    return arr;
-  }
-
-  traps.start = function(){
-    traps.started = true;
-    traps.deck = shuffled(CARDS).slice(0, ROUND);
-    traps.idx = 0; traps.right = 0; traps.misses = {}; traps.answered = false;
-    document.getElementById("resultArea").hidden = true;
-    document.getElementById("playArea").hidden = false;
-    renderCard();
-  };
-
-  function renderCard(){
-    var c = traps.deck[traps.idx];
-    traps.answered = false;
-    document.getElementById("pgLabel").textContent = "Карта " + (traps.idx + 1) + " от " + traps.deck.length;
-    document.getElementById("pgScore").textContent = traps.right + " верни";
-    document.getElementById("pgBar").style.width = (traps.idx / traps.deck.length * 100) + "%";
-    document.getElementById("thoughtText").textContent = "„" + c.t + "“";
-    document.getElementById("feedback").innerHTML = "";
-    document.getElementById("nextWrap").hidden = true;
-
-    var distractors = shuffled(TRAP_KEYS.filter(function(k){ return k !== c.k; })).slice(0, 3);
-    var options = shuffled([c.k].concat(distractors));
-
-    var box = document.getElementById("opts");
-    box.innerHTML = "";
-    options.forEach(function(k){
-      var b = document.createElement("button");
-      b.type = "button";
-      b.className = "opt";
-      b.innerHTML = '<span class="tick" aria-hidden="true"></span><span>' + TRAPS[k].name + '</span>';
-      b.addEventListener("click", function(){ answer(k, b); });
-      box.appendChild(b);
-    });
-  }
-
-  function answer(picked, btn){
-    if (traps.answered) return;
-    traps.answered = true;
-    var c = traps.deck[traps.idx];
-    var correct = picked === c.k;
-    if (correct) traps.right++;
-    else traps.misses[c.k] = (traps.misses[c.k] || 0) + 1;
-
-    document.querySelectorAll("#opts .opt").forEach(function(b){
-      b.disabled = true;
-      var label = b.querySelector("span:last-child").textContent;
-      if (label === TRAPS[c.k].name){
-        b.classList.add("is-ok");
-        b.querySelector(".tick").textContent = "✓";
-      } else if (b === btn){
-        b.classList.add("is-no");
-        b.querySelector(".tick").textContent = "✕";
-      } else {
-        b.classList.add("dim");
-      }
-    });
-
-    document.getElementById("pgScore").textContent = traps.right + " верни";
-    document.getElementById("feedback").innerHTML =
-      '<div class="feedback" style="--c:var(' + (correct ? "--ok" : "--no") + ')">' +
-        '<p class="verdict-line">' + (correct ? "Точно този." : "Тук работи друг: " + TRAPS[c.k].name + ".") + '</p>' +
-        '<p>' + c.why + '</p>' +
-        '<div class="reframe"><span>По-балансирано звучи така</span><p>' + c.re + '</p></div>' +
-      '</div>';
-    document.getElementById("nextWrap").hidden = false;
-    document.getElementById("bNext").textContent =
-      (traps.idx + 1 >= traps.deck.length) ? "Виж резултата" : "Следваща карта";
-    document.getElementById("bNext").focus();
-  }
-
-  document.getElementById("bNext").addEventListener("click", function(){
-    if (traps.idx + 1 >= traps.deck.length) finish();
-    else { traps.idx++; renderCard(); }
-  });
-
-  function finish(){
-    document.getElementById("playArea").hidden = true;
-    var area = document.getElementById("resultArea");
-    area.hidden = false;
-
-    var missed = Object.keys(traps.misses).sort(function(a,b){ return traps.misses[b] - traps.misses[a]; });
-    var html = '<div class="result">';
-    html += '<span class="eyebrow">Резултат</span>';
-    html += '<h2 style="margin-top:10px">Разпознахте <span class="score">' + traps.right + '</span> от <span class="score">' + traps.deck.length + '</span></h2>';
-
-    if (!missed.length){
-      html += '<p class="lead">Всички до един. Разпознаването е първата половина от работата — втората е да го правите в момента, в който мисълта се появи, а не когато е на екрана пред вас.</p>';
-    } else {
-      html += '<p class="lead">Броят значи по-малко от това кои капани се изплъзнаха. Обикновено най-трудно се разпознава онзи, който ползваме най-често — той просто звучи като истина.</p>';
-      html += '<div class="tally">';
-      missed.forEach(function(k){
-        html += '<div class="tally-row"><div><b class="miss">' + TRAPS[k].name + '</b>' +
-                '<p style="font-size:.87rem;color:var(--muted-t)">' + TRAPS[k].blurb + '</p></div>' +
-                '<span class="n">' + traps.misses[k] + ' пропуск' + (traps.misses[k] > 1 ? "а" : "") + '</span></div>';
-      });
-      html += '</div>';
-    }
-
-    html += '<div class="actions">' +
-              '<button type="button" class="btn primary" id="bAgain">Ново раздаване</button>' +
-              '<button type="button" class="btn" id="bHome">Към началото</button>' +
-            '</div></div>';
-    area.innerHTML = html;
-    document.getElementById("bAgain").addEventListener("click", function(){ traps.start(); });
-    document.getElementById("bHome").addEventListener("click", function(){ go("home"); });
-  }
-
-  (function buildRef(){
-    var box = document.getElementById("refList");
-    TRAP_KEYS.forEach(function(k){
-      var d = document.createElement("div");
-      d.className = "ref-item";
-      d.innerHTML = "<b>" + TRAPS[k].name + "</b><p>" + TRAPS[k].blurb + "</p>";
-      box.appendChild(d);
-    });
-  })();
-
 
   /* ================================================================
      BREATHING + BILATERAL
